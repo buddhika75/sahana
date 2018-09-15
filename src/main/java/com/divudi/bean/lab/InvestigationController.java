@@ -125,10 +125,10 @@ public class InvestigationController implements Serializable {
         if (current.getReportedAs() == null) {
             current.setReportedAs(current);
         }
-        ixCalController.setIx((Investigation) current.getReportedAs()); 
+        ixCalController.setIx((Investigation) current.getReportedAs());
         return "lab_calculation";
     }
-    
+
     public String toEditFees() {
         if (current == null) {
             JsfUtil.addErrorMessage("Please select investigation");
@@ -439,16 +439,39 @@ public class InvestigationController implements Serializable {
     }
 
     public List<Investigation> getSelectedItems() {
-        if (selectText.trim().equals("")) {
-            selectedItems = getFacade().findBySQL("select c from Investigation c where c.retired=false order by c.name");
+        String j;
+        Map m = new HashMap();
+        if (institution == null) {
+            m.put("qry", "%" + selectText.toUpperCase() + "%");
+            j = "select i "
+                    + " from Investigation i "
+                    + " where i.retired=false "
+                    + " and upper(i.name) like :qry "
+                    + " and i.institution is null"
+                    + " order by i.name";
         } else {
-            selectedItems = getFacade().findBySQL("select c from Investigation c where c.retired=false and upper(c.name) like '%" + getSelectText().toUpperCase() + "%' order by c.name");
+            m.put("qry", "%" + selectText.toUpperCase() + "%");
+            m.put("ins", institution);
+            j = "select i "
+                    + " from Investigation i "
+                    + " where i.retired=false "
+                    + " and upper(i.name) like :qry "
+                    + " and i.institution = :ins "
+                    + " order by i.name";
+
         }
+        selectedItems = getFacade().findBySQL(j, m);
         return selectedItems;
     }
 
     public List<Investigation> completeItem(String qry) {
         List<Investigation> completeItems = getFacade().findBySQL("select c from Item c where ( type(c) = Investigation or type(c) = Packege ) and c.retired=false and upper(c.name) like '%" + qry.toUpperCase() + "%' order by c.name");
+        return completeItems;
+    }
+    
+    
+    public List<Investigation> completeMasterItem(String qry) {
+        List<Investigation> completeItems = getFacade().findBySQL("select c from Investigation c where c.institution is null and c.retired=false and upper(c.name) like '%" + qry.toUpperCase() + "%' order by c.name");
         return completeItems;
     }
 

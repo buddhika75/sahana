@@ -30,7 +30,6 @@
                     <h:panelGrid id ="gpVeda" columns="3" styleClass="alignTop" >
 
                         <h:panelGrid id="gpSelect" columns="1"  >
-                            <h:outputLabel value="#{investigationController.institution.name}" ></h:outputLabel>
                             <p:panel header="Search Investigation" >
                                 <h:panelGrid id="gpSelectText" >
 
@@ -38,7 +37,7 @@
                                         <f:ajax execute="txtSearch" render="lstSelect" event="keyup" />
                                     </p:inputText>
 
-                                    <p:selectOneListbox converter="ixcon"   id="lstSelect"   value="#{investigationController.current}" style="min-width: 223px; height: 300px;">
+                                    <p:selectOneListbox converter="ixcon"   id="lstSelect"   value="#{investigationController.current}" >
                                         <f:selectItems  value="#{investigationController.selectedItems}" var="myItem" itemValue="#{myItem}" itemLabel="#{myItem.name}" ></f:selectItems>
                                         <p:ajax event="change"   update="gpDetail" process="lstSelect" >
                                         </p:ajax>
@@ -68,58 +67,54 @@
                             </f:facet>
                             <h:panelGrid id="gpDetail" columns="1">
                                 <h:panelGrid id="gpDetailText" columns="2">
-                                    <h:outputText  value="ID" />
-                                    <h:outputLabel value="#{investigationController.current.id}" />
-                                    <h:outputText  value="Institution" />
-                                    <h:outputLabel value="#{investigationController.current.institution.name}" />
-
-                                    <h:outputText id="lblName" value="Name" ></h:outputText>
-                                    <h:inputText autocomplete="off" id="txtName" value="#{investigationController.current.name}" required="true" ></h:inputText>
-                                    <h:outputText id="lblAddress" value="Printing Name" ></h:outputText>
-                                    <h:inputText autocomplete="off" id="txtAddress"  class="pdInputText" value="#{investigationController.current.printName}"  ></h:inputText>
-                                    <h:outputText id="lblFullName" value="Full Name" ></h:outputText>
-                                    <h:inputText autocomplete="off" id="txtFullName"  class="pdInputText" value="#{investigationController.current.fullName}"  ></h:inputText>
+                                    <p:outputLabel id="lblName" value="Name" ></p:outputLabel>
+                                    <p:inputText autocomplete="off" id="txtName" value="#{investigationController.current.name}" 
+                                                 required="true" style="width: 400px;" ></p:inputText>
+                                    <p:outputLabel id="lblAddress" value="Printing Name" ></p:outputLabel>
+                                    <p:inputText autocomplete="off" id="txtAddress"  style="width: 400px;"  class="pdInputText" value="#{investigationController.current.printName}"  ></p:inputText>
+                                    <p:outputLabel id="lblFullName" value="Full Name" ></p:outputLabel>
+                                    <p:inputText autocomplete="off" id="txtFullName"  style="width: 400px;"  class="pdInputText" value="#{investigationController.current.fullName}"  ></p:inputText>
                                     <p:outputLabel value="Item Code"/>
                                     <p:inputText autocomplete="off" value="#{investigationController.current.code}"/>
 
                                     <p:outputLabel value="Report Format"/>
-                                    <h:selectOneListbox  size="1" value="#{investigationController.current.reportType}" >                               
+                                    <p:selectOneMenu value="#{investigationController.current.reportType}" required="true">                               
                                         <f:selectItem itemLabel="General" itemValue="General"/>
                                         <f:selectItem itemLabel="Microbiology" itemValue="Microbiology"/>
-                                    </h:selectOneListbox>
+                                    </p:selectOneMenu>
 
-                                    <h:outputText value="Invesitgation Category" ></h:outputText>
-                                    <h:selectOneListbox id="cmbCat"  size="1" value="#{investigationController.current.investigationCategory}" >
+                                    <p:outputLabel value="Invesitgation Category" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbCat"  value="#{investigationController.current.investigationCategory}" required="true">
                                         <f:selectItem itemLabel="Please select a category"/>
                                         <f:selectItems value="#{investigationCategoryController.items}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                    </h:selectOneListbox>
-                                    <h:outputText value="Invesitgation Tube" ></h:outputText>
-                                    <h:selectOneListbox id="cmbTube" size="1" value="#{investigationController.current.investigationTube }" >
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Invesitgation Tube" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbTube" value="#{investigationController.current.investigationTube }" >
                                         <f:selectItem itemLabel="Please select a Tube"/>
                                         <f:selectItems value="#{investigationTubeController.items}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                    </h:selectOneListbox>
-                                    <h:outputText value="Machine" ></h:outputText>
-                                    <h:selectOneListbox id="cmbmac"  size="1" value="#{investigationController.current.machine}" >
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Machine" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbmac" value="#{investigationController.current.machine}" >
                                         <f:selectItem itemLabel="Please select a Machine"/>
                                         <f:selectItems value="#{machineController.items}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                    </h:selectOneListbox>
-                                    <h:outputText value="Serial Numbers" ></h:outputText>
-                                    <h:selectOneListbox id="cmbSerial" size="1" 
-                                                        value="#{investigationController.current.sessionNumberType}" >
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Serial Numbers" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbSerial" 
+                                                     value="#{investigationController.current.sessionNumberType}" >
                                         <f:selectItem itemLabel="Please select a Session Number Generation Strategy"/>
                                         <f:selectItems value="#{enumController.sessionNumberTypes}" />
-                                    </h:selectOneListbox>
+                                    </p:selectOneMenu>
 
-                                    <h:outputText value="Worksheet" ></h:outputText>
-                                    <h:selectOneListbox id="cmbWs" size="1" value="#{investigationController.current.worksheet }" >
+                                    <p:outputLabel value="Worksheet" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbWs" value="#{investigationController.current.worksheet }" >
                                         <f:selectItem itemLabel="By Values"/>
                                         <f:selectItems value="#{reportFormatController.items}" var="rf" itemLabel="#{rf.name}" itemValue="#{rf}" />
-                                    </h:selectOneListbox>
+                                    </p:selectOneMenu>
 
-                                    <h:outputText value="Report" ></h:outputText>
-                                    <h:selectOneListbox id="cmbRf" size="1" value="#{investigationController.current.reportFormat}" >
+                                    <p:outputLabel value="Report" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbRf" value="#{investigationController.current.reportFormat}" >
                                         <f:selectItems value="#{reportFormatController.items}" var="rf1" itemLabel="#{rf1.name}" itemValue="#{rf1}" />
-                                    </h:selectOneListbox>
+                                    </p:selectOneMenu>
 
                                     <p:selectBooleanCheckbox   id="chkBilledAs" value="#{investigationController.billedAs}" itemLabel="Billed as a seperate investigation"  >
                                         <p:ajax event="change" process="@this" update="billedAsIx" />
@@ -131,49 +126,73 @@
                                         <p:ajax event="change" process="@this" update="reportedAsIx" />
                                     </p:selectBooleanCheckbox>
                                     <h:panelGroup >
-                                        <p:autoComplete converter="ixcon" disabled="#{!investigationController.reportedAs}" widgetVar="aIx2" id="reportedAsIx" forceSelection="true" value="#{investigationController.current.reportedAs}" completeMethod="#{investigationController.completeItem}" var="ix2" itemLabel="#{ix2.name}" itemValue="#{ix2}" size="30"  style="width: 400px;">
-                                        </p:autoComplete>
+                                        <p:autoComplete converter="ixcon" disabled="#{!investigationController.reportedAs}" 
+                                                        widgetVar="aIx2" id="reportedAsIx" 
+                                                        forceSelection="true" 
+                                                        value="#{investigationController.current.reportedAs}" 
+                                                        completeMethod="#{investigationController.completeMasterItem}" 
+                                                        var="ix2" itemLabel="#{ix2.name}" 
+                                                        itemValue="#{ix2}" size="30"  >
 
+                                            <p:column>
+                                                <p:outputLabel value="#{ix2.id}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:outputLabel value="#{ix2.name}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:outputLabel value="#{ix2.institution.name}" />
+                                            </p:column>
+                                        </p:autoComplete>
+                                        <p:outputLabel value="(Master Item)" 
+                                                       rendered="#{investigationController.current.reportedAs.institution eq null}" ></p:outputLabel>
                                     </h:panelGroup>
 
-                                    <h:outputText value="Sample" ></h:outputText>
-                                    <h:selectOneListbox id="cmbSample" size="1" value="#{investigationController.current.sample}" >
+                                    <p:outputLabel value="Sample" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbSample" value="#{investigationController.current.sample}" >
                                         <f:selectItem itemLabel="Please select a sample"/>
                                         <f:selectItems value="#{sampleController.items}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                    </h:selectOneListbox>
-                                    <h:outputText value="Sample Volume" ></h:outputText>
-                                    <h:inputText autocomplete="off"  class="pdInputText" value="#{investigationController.current.sampleVolume}"  ></h:inputText>
-                                    <h:outputText value="Institution" ></h:outputText>
-                                    <h:selectOneListbox id="cmbIns"   size="1" value="#{investigationController.current.institution}" >
-                                        <f:selectItem itemLabel="Please select a Institution"/>
-                                        <f:selectItems value="#{institutionController.companies}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                        <f:ajax execute="cmbIns" render="cmbDep" event="change"/>                                        
-                                    </h:selectOneListbox>
-                                    <h:outputText value="Department" ></h:outputText>
-                                    <h:selectOneListbox id="cmbDep" size="1" value="#{investigationController.current.department}" >
-                                        <f:selectItem itemLabel="Please select a Department"/>
-                                        <f:selectItems value="#{investigationController.institutionDepatrments}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
-                                    </h:selectOneListbox>
+                                    </p:selectOneMenu>
 
-                                    <h:outputText value="" ></h:outputText>
-                                    <p:selectBooleanCheckbox value="#{investigationController.current.userChangable}" itemLabel="Can change Rate"/>
-
-                                    <h:outputText value="" ></h:outputText>
-                                    <p:selectBooleanCheckbox value="#{investigationController.current.chargesVisibleForInward}" itemLabel="Charges Visible for Inward Billing"/>
-
-                                    <h:outputText value="" ></h:outputText>
-                                    <p:selectBooleanCheckbox value="#{investigationController.current.marginNotAllowed}" itemLabel="Margin Not Allowed"/>
-
-                                    <h:outputText value="" ></h:outputText>
-                                    <p:selectBooleanCheckbox value="#{investigationController.current.requestForQuentity}" itemLabel="Request for Quentity"/>
-
-
-                                    <h:outputText value="" ></h:outputText>
-                                    <p:selectBooleanCheckbox value="#{investigationController.current.discountAllowed}" itemLabel="Discount Allowed"/>
-                                    <p:selectOneMenu id="cmbInward" value="#{investigationController.current.inwardChargeType}" >
+                                    <p:outputLabel value="Inward Charge Category" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbInward" value="#{investigationController.current.inwardChargeType}"
+                                                     required="true" >
                                         <f:selectItem itemLabel="Please select Charge"/>
                                         <f:selectItems value="#{enumController.inwardChargeTypesForSetting}" var="i" itemLabel="#{i.label}" itemValue="#{i}"/>
                                     </p:selectOneMenu>
+
+
+                                    <p:outputLabel value="Sample Volume" ></p:outputLabel>
+                                    <p:inputText autocomplete="off"  class="pdInputText" value="#{investigationController.current.sampleVolume}"  ></p:inputText>
+                                    
+                                    <p:outputLabel value="Institution" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbIns"   value="#{investigationController.current.institution}" >
+                                        <f:selectItem itemLabel="Please select a Institution"/>
+                                        <f:selectItems value="#{institutionController.companies}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
+                                        <f:ajax execute="cmbIns" render="cmbDep" event="change"/>                                        
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Department" ></p:outputLabel>
+                                    <p:selectOneMenu id="cmbDep"  value="#{investigationController.current.department}" >
+                                        <f:selectItem itemLabel="Please select a Department"/>
+                                        <f:selectItems value="#{investigationController.institutionDepatrments}" var="cat" itemLabel="#{cat.name}" itemValue="#{cat}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="" ></p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{investigationController.current.userChangable}" itemLabel="Can change Rate"/>
+
+                                    <p:outputLabel value="" ></p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{investigationController.current.chargesVisibleForInward}" itemLabel="Charges Visible for Inward Billing"/>
+
+                                    <p:outputLabel value="" ></p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{investigationController.current.marginNotAllowed}" itemLabel="Margin Not Allowed"/>
+
+                                    <p:outputLabel value="" ></p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{investigationController.current.requestForQuentity}" itemLabel="Request for Quentity"/>
+
+
+                                    <p:outputLabel value="" ></p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{investigationController.current.discountAllowed}" itemLabel="Discount Allowed"/>
+
 
                                 </h:panelGrid>
                             </h:panelGrid>
