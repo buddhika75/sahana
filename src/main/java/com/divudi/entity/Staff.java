@@ -111,7 +111,8 @@ public class Staff implements Serializable {
     Date dateJoined;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date dateLeft;
-    @Temporal(javax.persistence.TemporalType.DATE)
+//    @Temporal(javax.persistence.TemporalType.DATE)
+    @Transient
     Date dateRetired;
     @Transient
     double basic;

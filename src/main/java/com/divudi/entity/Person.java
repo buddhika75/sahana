@@ -71,7 +71,8 @@ public class Person implements Serializable {
     Date createdAt;
     @ManyToOne
     WebUser editer;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
     Date editedAt;
     //Retairing properties
     boolean retired;

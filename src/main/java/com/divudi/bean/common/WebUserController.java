@@ -281,7 +281,7 @@ public class WebUserController implements Serializable {
 
         for (int i = 0; i < temp.size(); i++) {
             WebUser w = temp.get(i);
-            w.setName(getSecurityController().decrypt(w.getName()).toLowerCase());
+            w.setName((w.getName()).toLowerCase());
             temp.set(i, w);
         }
 
@@ -360,7 +360,7 @@ public class WebUserController implements Serializable {
         for (WebUser w : allUsers) {
 
             if (userName != null && w != null && w.getName() != null) {
-                if (userName.toLowerCase().equals(getSecurityController().decrypt(w.getName()).toLowerCase())) {
+                if (userName.toLowerCase().equals((w.getName()).toLowerCase())) {
                     ////System.out.println("Ift");
                     available = true;
                     return available;// ok. that is may be the issue. we will try with it ok
@@ -404,7 +404,7 @@ public class WebUserController implements Serializable {
         //Save Web User
         getCurrent().setInstitution(getInstitution());
         getCurrent().setDepartment(getDepartment());
-        getCurrent().setName(getSecurityController().encrypt(getCurrent().getName()));
+        getCurrent().setName((getCurrent().getName()));
         getCurrent().setWebUserPassword(getSecurityController().hash(getCurrent().getWebUserPassword()));
         getCurrent().setCreatedAt(Calendar.getInstance(TimeZone.getTimeZone("IST")).getTime());
         getCurrent().setCreater(sessionController.loggedUser);
