@@ -72,6 +72,7 @@ public class StoreBillSearch implements Serializable {
     private Date toDate;
     //  private String comment;
     WebUser user;
+    @EJB
     StoreBean storeBean;
     ////////////////
     List<BillItem> refundingItems;

@@ -8,7 +8,6 @@ import com.divudi.bean.common.PriceMatrixController;
 import com.divudi.bean.common.SessionController;
 import com.divudi.bean.common.UtilityController;
 import com.divudi.data.BillNumberSuffix;
-import com.divudi.data.BillType;
 import com.divudi.ejb.BillNumberGenerator;
 import com.divudi.bean.inward.InwardBeanController;
 import com.divudi.data.BillClassType;
@@ -18,7 +17,6 @@ import com.divudi.ejb.PharmacyCalculation;
 import com.divudi.entity.Bill;
 import com.divudi.entity.BillItem;
 import com.divudi.entity.Department;
-import com.divudi.entity.Item;
 import com.divudi.entity.PriceMatrix;
 import com.divudi.entity.RefundBill;
 import com.divudi.entity.pharmacy.PharmaceuticalBillItem;
@@ -58,7 +56,7 @@ public class BhtIssueReturnController implements Serializable {
     private PharmacyController pharmacyController;
     @Inject
     private SessionController sessionController;
-    @Inject
+    @EJB
     private BillNumberGenerator billNumberBean;
     @EJB
     private BillFacade billFacade;
