@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -52,9 +53,11 @@ public class Shift implements Serializable {
     private Shift shift;
     @Enumerated(EnumType.STRING)
     private DayType dayType;
-    @Temporal(javax.persistence.TemporalType.TIME)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "startingtimenew2")
     private Date startingTime;
-    @Temporal(javax.persistence.TemporalType.TIME)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "endingtimenew2")
     private Date endingTime;
     private boolean grouped;
     private int repeatedDay;

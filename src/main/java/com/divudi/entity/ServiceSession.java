@@ -7,6 +7,7 @@ package com.divudi.entity;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.ManyToOne;
@@ -45,11 +46,13 @@ public class ServiceSession extends Item implements Serializable {
     @OneToOne(mappedBy = "afterSession")
     ServiceSession beforeSession;
     /////Newly Added
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "startingtimenew1")
+    @Temporal(javax.persistence.TemporalType.TIME)
     Date startingTime;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "endingtimenew1")
+    @Temporal(javax.persistence.TemporalType.TIME)
     Date endingTime;
-    
+
     boolean refundable = false;
     int displayCount;
     double displayPercent;
@@ -235,7 +238,7 @@ public class ServiceSession extends Item implements Serializable {
         Calendar start = Calendar.getInstance();
         System.out.println("sessionAt = " + sessionAt);
         System.out.println("startingTime = " + startingTime);
-        if (sessionAt == null || startingTime ==null) {
+        if (sessionAt == null || startingTime == null) {
             System.out.println("return null");
             return null;
         }
@@ -254,7 +257,7 @@ public class ServiceSession extends Item implements Serializable {
         Calendar ending = Calendar.getInstance();
         System.out.println("sessionAt = " + sessionAt);
         System.out.println("getEndingTime() = " + getEndingTime());
-        if (sessionAt == null || getEndingTime()==null) {
+        if (sessionAt == null || getEndingTime() == null) {
             return null;
         }
         st.setTime(sessionAt);
@@ -311,10 +314,10 @@ public class ServiceSession extends Item implements Serializable {
     }
 
     public Date getEndingTime() {
-        if(endingTime==null){
-            if(startingTime==null){
-                endingTime =null;
-            }else{
+        if (endingTime == null) {
+            if (startingTime == null) {
+                endingTime = null;
+            } else {
                 Calendar e = Calendar.getInstance();
                 e.setTime(startingTime);
                 e.add(Calendar.HOUR, 2);
@@ -343,5 +346,5 @@ public class ServiceSession extends Item implements Serializable {
     public void setTransCreditBillCount(int transCreditBillCount) {
         this.transCreditBillCount = transCreditBillCount;
     }
-    
+
 }

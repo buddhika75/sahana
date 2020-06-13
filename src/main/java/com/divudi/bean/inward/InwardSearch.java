@@ -78,7 +78,7 @@ public class InwardSearch implements Serializable {
     private CommonFunctions commonFunctions;
     @Inject
     private BillBeanController billBean;
-    @Inject
+    @EJB
     private BillNumberGenerator billNumberBean;
     @EJB
     PatientEncounterFacade patientEncounterFacade;
