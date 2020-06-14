@@ -17,6 +17,18 @@
         <h:outputStylesheet library="css" name="printing.css" />
 
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-167559394-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-167559394-1');
+        </script>
+
     </h:head>
     <h:body  >
         <p:panel styleClass="fullSpread" >
@@ -241,7 +253,7 @@
                                         <p:menuitem  ajax="false" action="/pharmacy/pharmacy_purhcase_order_request"  
                                                      value="Purchase Orders" rendered="#{webUserController.hasPrivilege('PharmacyOrderCreation')}" ></p:menuitem>
                                         <p:menuitem  ajax="false" action="#{reorderController.autoOrderByDistributor()}"  value="By Distributor" 
-                                                         rendered="#{webUserController.hasPrivilege('PharmacyOrderCreation')}" ></p:menuitem>
+                                                     rendered="#{webUserController.hasPrivilege('PharmacyOrderCreation')}" ></p:menuitem>
                                         <p:menuitem  ajax="false" action="/pharmacy/pharmacy_purhcase_order_list_to_approve"  
                                                      value="PO Approval" actionListener="#{searchController.makeListNull()}" rendered="#{webUserController.hasPrivilege('Pharmacy')}" ></p:menuitem>
                                         <p:menuitem  ajax="false" action="/pharmacy/pharmacy_purchase_order_list_for_recieve"  
@@ -1176,7 +1188,7 @@
                                     <p:menuitem  ajax="false"  action="/admin_fees" value="Manage Prices/Charges/Packages"></p:menuitem>
                                     <p:menuitem ajax="false" action="/dataAdmin/admin_data_administration" value="Data Administration" ></p:menuitem>
                                 </p:submenu>
-                                
+
                                 <p:submenu label="Discount" rendered="#{webUserController.hasPrivilege('MemberShip')}" >
                                     <p:submenu label="Membership Sheme">
                                         <p:menuitem action="/memberShip/membership_scheme"   value="Membership Schemes" ajax="false" rendered="#{webUserController.hasPrivilege('MembershipSchemes')}"/>
