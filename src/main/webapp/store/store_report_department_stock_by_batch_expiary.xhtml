@@ -55,12 +55,12 @@
                                     <h:outputLabel value="#{storeReportsStock.department.name} : Department Stock By Expiry" />
                                     <h:outputLabel value="&emsp; &emsp;From  :  " style=" white-space:pre-line;"/>
                                     <h:outputLabel value="#{storeReportsStock.fromDate}"  >
-                                        <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                        <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                     <p:spacer width="30" height="1"/>
                                     <h:outputLabel value="&emsp; &emsp;To : "/>
                                     <h:outputLabel value="#{storeReportsStock.toDate}"  >
-                                        <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                        <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
 
                                 </f:facet>

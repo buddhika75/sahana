@@ -152,16 +152,16 @@
                                                 <div  class="billdate">
                                                     <h:outputLabel value="#{billSearch.bill.cancelledBill.billDate}"
                                                                    rendered="#{billSearch.bill.cancelledBill.insId ne null}"  >
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                     <h:outputLabel value="#{billSearch.bill.refundedBill.billDate}"
                                                                    rendered="#{billSearch.bill.refundedBill.insId ne null}">
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                     <h:outputLabel value="#{billSearch.bill.billDate}"
                                                                    rendered="#{billSearch.bill.refundedBill.insId eq null and 
                                                                                billSearch.bill.cancelledBill.insId eq null }">
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                 </div>
 

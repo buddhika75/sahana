@@ -1692,7 +1692,7 @@
                                     <h:outputLabel value="Date And Time"/>
                                 </f:facet>
                                 <h:outputLabel value="#{b7.createdAt}" >
-                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </p:column>
 
@@ -1754,7 +1754,7 @@
                                     <h:outputLabel value="Slip Date"/>
                                 </f:facet>
                                 <h:outputLabel value="#{b7.chequeDate}" >
-                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </p:column>
 
@@ -1763,7 +1763,7 @@
                                     <h:outputLabel value="Slip Bank"/>
                                 </f:facet>
                                 <h:outputLabel value="#{b7.bank.name}" >
-                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </p:column>
 

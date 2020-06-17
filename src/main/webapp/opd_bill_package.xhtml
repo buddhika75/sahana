@@ -360,7 +360,7 @@
 
                                                                 <h:outputLabel value="#{bill.billDate}"
                                                                                style="position: absolute; left: 9.8cm; top:1.1cm;" >
-                                                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                                                    <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                                 </h:outputLabel>
 
                                                                 <h:outputLabel value="#{bill.paymentScheme.name}"

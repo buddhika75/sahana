@@ -53,7 +53,7 @@
                                               or sts.shift.dayType eq 'SleepingDay' ? 'highLight2':null}">
                     <f:facet name="header">
                         <h:outputLabel value="#{data.date}" >
-                            <f:convertDateTime pattern="dd MM yyyy"/>
+                            <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </h:outputLabel>
                     </f:facet>
                     <p:column headerText="Shift Name" styleClass="singleLine">

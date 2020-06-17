@@ -58,7 +58,7 @@
             <p:column headerText="Invoice Date" >
                 <h:commandLink action="/pharmacy/pharmacy_reprint_grn" >
                     <h:outputLabel  value="#{bill.invoiceDate}">
-                        <f:convertDateTime pattern="dd MM yyyy"/>
+                        <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                     </h:outputLabel>                    
                     <f:setPropertyActionListener value="#{bill}" target="#{pharmacyBillSearch.bill}"/>
                 </h:commandLink>
@@ -72,7 +72,7 @@
             <p:column headerText="Billed at"  >
                 <h:commandLink action="/pharmacy/pharmacy_reprint_grn" >
                     <h:outputLabel value="#{bill.createdAt}" >
-                        <f:convertDateTime pattern="dd MM yyyy hh mm a"/>
+                        <f:convertDateTime pattern="dd MM yyyy hh mm a" timeZone="Asia/Colombo"/>Item
                     </h:outputLabel>
                     <f:setPropertyActionListener value="#{bill}" target="#{pharmacyBillSearch.bill}"/>
                 </h:commandLink>

@@ -54,7 +54,7 @@
                     <p:column headerText="Requested at"  >
                         <h:commandLink action="pharmacy_reprint_order_request" >
                             <h:outputLabel value="#{b.createdAt}" >
-                                <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                             <f:setPropertyActionListener value="#{b}" target="#{pharmacyBillSearch.bill}"/>
                         </h:commandLink>
@@ -63,7 +63,7 @@
                             <h:outputLabel style="color: red;" value="Cancelled at " />
                             <h:outputLabel style="color: red;" rendered="#{b.cancelled}"
                                            value="#{b.cancelledBill.createdAt}" >
-                                <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                         </h:panelGroup>                       
                     </p:column> 

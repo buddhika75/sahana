@@ -80,7 +80,7 @@
                             </p:column>
                             <p:column headerText="Billed at"  >
                                 <h:outputLabel value="#{bill.createdAt}" >
-                                    <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                    <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                                 <h:outputLabel value="#{bill.createdAt.time}" >
 
@@ -89,13 +89,13 @@
                                 <h:panelGroup rendered="#{bill.cancelled}" >
                                     <h:outputLabel style="color: red;" value="Cancelled at " />
                                     <h:outputLabel style="color: red;" rendered="#{bill.cancelled}" value="#{bill.cancelledBill.createdAt}" >
-                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </h:panelGroup>
                                 <h:panelGroup rendered="#{bill.refunded}" >
                                     <h:outputLabel style="color: red;" value="Refunded at " />
                                     <h:outputLabel style="color: red;" rendered="#{bill.refunded}" value="#{bill.refundedBill.createdAt}" >
-                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </h:panelGroup>
                             </p:column>  
@@ -129,7 +129,7 @@
                                 <h:panelGroup rendered="#{bill.patient.person.editedAt ne null}" >
                                     <h:outputLabel style="color: red;" value="Edited At " />
                                     <h:outputLabel style="color: red;" rendered="#{bill.patient.person.editedAt ne null}" value="#{bill.patient.person.editedAt}" >
-                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                        <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </h:panelGroup>
 

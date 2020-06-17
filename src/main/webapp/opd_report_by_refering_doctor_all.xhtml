@@ -50,11 +50,11 @@
 
                             <h:outputLabel value="Report by Referring Doctor From "/>
                             <p:outputLabel value="#{commonReport.fromDate}">
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </p:outputLabel>
                             <p:outputLabel value=" To "/>
                             <p:outputLabel value="#{commonReport.toDate}">
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </p:outputLabel>
 
                         </f:facet>

@@ -107,16 +107,16 @@
                                                 <div  class="billdate">
                                                     <h:outputLabel value="#{labBillEditController.bill.cancelledBill.billDate}"
                                                                    rendered="#{labBillEditController.bill.cancelledBill.insId ne null}"  >
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                     <h:outputLabel value="#{labBillEditController.bill.refundedBill.billDate}"
                                                                    rendered="#{labBillEditController.bill.refundedBill.insId ne null}">
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                     <h:outputLabel value="#{labBillEditController.bill.billDate}"
                                                                    rendered="#{labBillEditController.bill.refundedBill.insId eq null and 
                                                                                labBillEditController.bill.cancelledBill.insId eq null }">
-                                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                     </h:outputLabel>
                                                 </div>
 

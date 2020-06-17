@@ -49,10 +49,10 @@
 
                         <div class="billdatePrinting" >
                             <h:outputLabel value="#{cc.attrs.bill.billDate}" rendered="#{cc.attrs.bill.cancelled eq false}">
-                                <f:convertDateTime pattern="dd/MM/yy"/>
+                                <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                             <h:outputLabel value="#{cc.attrs.bill.cancelledBill.billDate}" rendered="#{cc.attrs.bill.cancelled eq true}">
-                                <f:convertDateTime pattern="dd/MM/yy"/>
+                                <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                         </div>
 

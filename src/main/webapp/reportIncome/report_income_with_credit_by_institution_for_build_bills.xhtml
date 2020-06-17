@@ -76,11 +76,11 @@
                                 <h:outputLabel value="&emsp; #{institutionLabSumeryController.department.name}"/>
                                 <h:outputLabel value="From : " style="white-space: pre-line"/>
                             <h:outputLabel value="#{institutionLabSumeryController.fromDate}"  >
-                                <f:convertDateTime pattern="dd MMMM yyyy HH:mm:ss a" />
+                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                                 <h:outputLabel value="&emsp;To : "  />
                             <h:outputLabel value="#{institutionLabSumeryController.toDate}" >
-                                <f:convertDateTime pattern="dd MMMM yyyy HH:mm:ss a" />
+                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                                 
                             </f:facet>

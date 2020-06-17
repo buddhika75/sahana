@@ -119,7 +119,7 @@
                                     </p:column>
                                     <p:column >
                                         <h:outputLabel value="#{c.billFee.createdAt}">
-                                            <f:convertDateTime pattern="dd MM yyyy"/>
+                                            <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                         </h:outputLabel>                                                   
                                         <br/>
                                         <h:panelGroup rendered="#{c.billFee.retired}" >

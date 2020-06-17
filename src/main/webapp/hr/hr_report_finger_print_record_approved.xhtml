@@ -84,7 +84,7 @@
                                     <h:outputLabel value="Verified Date"  />
                                 </f:facet>
                                     <h:outputLabel  value="#{ss.recordTimeStamp}">
-                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </p:column>
                                 <p:column headerText="Verified Time">
@@ -100,7 +100,7 @@
                                     <h:outputLabel value="Logged Date"  />
                                 </f:facet>
                                     <h:outputLabel  value="#{ss.loggedRecord.recordTimeStamp}">
-                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </p:column>
                                 <p:column headerText="Logged Time">

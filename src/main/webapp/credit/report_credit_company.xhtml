@@ -51,13 +51,13 @@
 
                             <h:outputLabel value="From"  />
                             <h:outputLabel  value="#{creditCompanyDueController.fromDate}" >
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                             <p:spacer width="50" height="0"/>
                             <h:outputLabel value="To" />
                             <h:outputLabel  value="#{creditCompanyDueController.toDate}" >
 
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
 
                         </h:panelGrid>

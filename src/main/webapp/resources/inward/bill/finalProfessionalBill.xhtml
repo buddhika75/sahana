@@ -74,7 +74,7 @@
                             </td>
                             <td >
                                 <h:outputLabel value="#{cc.attrs.bill.patientEncounter.printingAdmissionTime}" >
-                                    <f:convertDateTime pattern="dd MM yyyy h:mm a" />
+                                    <f:convertDateTime pattern="dd MM yyyy h:mm a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </td>
                         </tr>
@@ -84,7 +84,7 @@
                             </td>
                             <td >
                                 <h:outputLabel value="#{cc.attrs.bill.patientEncounter.printingDischargeTime}" >
-                                    <f:convertDateTime pattern="dd MM yyyy h:mm a" />
+                                    <f:convertDateTime pattern="dd MM yyyy h:mm a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </td>
                         </tr>                        

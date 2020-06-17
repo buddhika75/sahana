@@ -64,11 +64,11 @@
                                 <h:outputLabel value="Doctor Payment Due Report OPD"/>
                                 <h:outputLabel value="From : " style="white-space: pre-line"/>
                                 <h:outputLabel value="#{searchController.fromDate}"  >
-                                    <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                    <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                                 <h:outputLabel value="&emsp; &emsp;To : "  />
                                 <h:outputLabel value="#{searchController.toDate}" >
-                                    <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                    <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </f:facet>
                             <p:column headerText="No" styleClass="alignTop">

@@ -44,7 +44,7 @@
                             </p:column>  
                             <p:column headerText="Date" filterBy="#{bill.createdAt}" >                              
                                     <h:outputLabel value="#{bill.createdAt}" >
-                                        <f:convertDateTime pattern="dd MM yyyy"/>
+                                        <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>                                
                             </p:column>
                             <p:column headerText="Time" filterBy="#{bill.createdAt}">                              
@@ -63,7 +63,7 @@
                             <p:column headerText="Cash Refunded Date" filterBy="#{bill.referenceBill.createdAt}" >
                                 
                                     <h:outputLabel value="#{bill.referenceBill.createdAt}" >
-                                        <f:convertDateTime pattern="dd MM yyyy"/>
+                                        <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                    
                             </p:column>

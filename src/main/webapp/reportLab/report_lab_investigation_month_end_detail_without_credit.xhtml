@@ -108,7 +108,7 @@
                             </p:column>
                             <p:column headerText="Billed Date">
                                 <h:outputLabel value="#{bc.createdAt}">
-                                    <f:convertDateTime pattern="dd MM yyyy"/>
+                                    <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                 </h:outputLabel>
                             </p:column>
                             <p:column headerText="Patient Name">

@@ -44,16 +44,16 @@
                                 <div  class="billdate">
                                     <h:outputLabel value="#{cc.attrs.controller.bill.cancelledBill.billDate}"
                                                    rendered="#{cc.attrs.controller.bill.cancelledBill.deptId ne null}"  >
-                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                     <h:outputLabel value="#{cc.attrs.controller.bill.refundedBill.billDate}"
                                                    rendered="#{cc.attrs.controller.bill.refundedBill.deptId ne null}">
-                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                     <h:outputLabel value="#{cc.attrs.controller.bill.billDate}"
                                                    rendered="#{cc.attrs.controller.bill.refundedBill.deptId eq null and 
                                                                cc.attrs.controller.bill.cancelledBill.deptId eq null }">
-                                        <f:convertDateTime pattern="dd/MM/yy"/>
+                                        <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                 </div>
 

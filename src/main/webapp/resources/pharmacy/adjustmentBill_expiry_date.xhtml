@@ -29,7 +29,7 @@
 
                 <h:outputLabel value="Adjusted At  "/>
                 <h:outputLabel value="#{cc.attrs.bill.createdAt}">
-                    <f:convertDateTime pattern="dd MM yyyy hh mm a"/>
+                    <f:convertDateTime pattern="dd MM yyyy hh mm a" timeZone="Asia/Colombo"/>Item
                 </h:outputLabel >
 
                 <h:outputLabel value="Adjusted By  "/>
@@ -57,7 +57,7 @@
                             <h:outputLabel value="Expiry" style="font-weight: bold!important;" />
                         </f:facet>
                         <h:outputLabel value="#{bip.pharmaceuticalBillItem.doe}">
-                            <f:convertDateTime pattern="dd/MM/yy"/>
+                            <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </h:outputLabel>
                     </p:column>
                     
@@ -66,7 +66,7 @@
                             <h:outputLabel value="Expiry After Adjusted" style="font-weight: bold!important;" />
                         </f:facet>
                         <h:outputLabel value="#{bip.pharmaceuticalBillItem.stock.itemBatch.dateOfExpire}">
-                            <f:convertDateTime pattern="dd/MM/yy"/>
+                            <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </h:outputLabel>
                     </p:column>
 

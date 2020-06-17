@@ -47,7 +47,7 @@
                             <p:column headerText="Date" >
                                 <h:commandLink action="pharmacy_reprint_grn" >
                                     <h:outputLabel value="#{bill.createdAt}" >
-                                        <f:convertDateTime pattern="dd MM yyyy"/>
+                                        <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                     <f:setPropertyActionListener value="#{bill}" target="#{pharmacyBillSeaphBillbill}"/>
                                 </h:commandLink>

@@ -135,7 +135,7 @@
                                     </p:column>
                                     <p:column headerText="Added Date">
                                         <h:outputLabel value="#{ser.createdAt}">
-                                            <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                            <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                         </h:outputLabel>
                                     </p:column>
                                     <p:column headerText="Added Time">
@@ -145,7 +145,7 @@
                                     </p:column>
                                     <p:column headerText="Added User">
                                         <h:outputLabel value="#{ser.creater.webUserPerson.name}">
-                                            <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"/>
+                                            <f:convertDateTime pattern="dd/MMM/yyyy - hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                                         </h:outputLabel>
                                     </p:column>
                                     <p:column>
@@ -206,7 +206,7 @@
                                     </p:column>
                                     <p:column headerText="Added User">
                                         <h:outputLabel value="#{pf.creater.webUserPerson.name}">
-                                            <f:convertDateTime pattern="dd MM yyyy hh mm a"/>
+                                            <f:convertDateTime pattern="dd MM yyyy hh mm a" timeZone="Asia/Colombo"/>Item
                                         </h:outputLabel>
                                     </p:column>
                                     <p:column>

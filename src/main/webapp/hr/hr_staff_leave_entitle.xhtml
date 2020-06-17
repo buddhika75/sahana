@@ -21,7 +21,7 @@
                             </f:facet>
                             <h:outputLabel value="Staff Joined Date"/>
                             <h:outputLabel value="#{staffLeaveEntitleController.current.staff.dateJoined}">
-                                <f:convertDateTime pattern="dd/MM/yy"/>
+                                <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
 
                             <h:outputLabel/>

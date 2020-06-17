@@ -92,7 +92,7 @@
                                 <p:outputLabel value="Created Date" />
                             </f:facet>
                             <p:outputLabel value="#{a.createdAt}" >
-                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </p:outputLabel>
                         </p:column>
                         <p:column>
@@ -106,7 +106,7 @@
                                 <p:outputLabel value="Edited Date" />
                             </f:facet>
                             <p:outputLabel value="#{a.editedAt}" >
-                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                                <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </p:outputLabel>
                         </p:column>
                         <p:column exportable="false">

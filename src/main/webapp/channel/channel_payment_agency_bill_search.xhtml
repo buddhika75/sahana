@@ -45,7 +45,7 @@
                             <p:column headerText="Bill Date" >
                                 <h:commandLink action="payment_bill_reprint" >
                                     <h:outputLabel value="#{billItem.bill.billDate}" >
-                                        <f:convertDateTime pattern="dd MM yyyy"/>
+                                        <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                     <f:setPropertyActionListener value="#{billItem}" target="#{billSearch.bill}"/>
                                 </h:commandLink>

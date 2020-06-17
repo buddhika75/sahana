@@ -57,7 +57,7 @@
                     <h:outputLabel value="Slip Date"/>
                 </f:facet>
                 <h:outputLabel value="#{ch.chequeDate}">                                
-                    <f:convertDateTime pattern="dd MM yy"/>
+                    <f:convertDateTime pattern="dd MM yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                 </h:outputLabel>  
             </p:column> 
             <p:column headerText="Total" style="width: 20%; text-align: right;">

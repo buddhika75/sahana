@@ -151,7 +151,7 @@
                                 </f:facet>
                             <h:outputLabel value="#{i.fromDate}" >
                                 
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                         </p:column>
                         <p:column headerText="To" >
@@ -159,7 +159,7 @@
                                     <h:outputLabel value="To"  />
                                 </f:facet>
                             <h:outputLabel value="#{i.toDate}">
-                                <f:convertDateTime pattern="dd MM yyyy"/>
+                                <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                             </h:outputLabel>
                         </p:column>
 

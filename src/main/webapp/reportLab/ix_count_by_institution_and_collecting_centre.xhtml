@@ -106,11 +106,11 @@
                         <h:outputLabel rendered="#{investigationMonthSummeryOwnControllerSession.collectingCentre ne null}" value="Collecting Centre - #{investigationMonthSummeryOwnControllerSession.collectingCentre.name} - "  style="white-space:pre-line;"/>
                         <h:outputLabel   value=" From " style="white-space:pre-line;"/>
                         <p:outputLabel value="#{investigationMonthSummeryOwnControllerSession.fromDate}">
-                            <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                            <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </p:outputLabel>
                         <h:outputLabel value=" - To "/>
                         <p:outputLabel value="#{investigationMonthSummeryOwnControllerSession.toDate}">
-                            <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a" />
+                            <f:convertDateTime pattern="dd MMMM yyyy hh:mm:ss a"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </p:outputLabel>
                     </f:facet>
 

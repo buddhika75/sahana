@@ -84,7 +84,7 @@
                                                 <h:outputLabel value="#{inwardSearch.bill.cancelledBill.insId} **Cancelled"  style="position:absolute;left:4.5cm; top:1.5cm;" /> 
 
                                                 <h:outputLabel value="#{inwardSearch.bill.cancelledBill.billDate}"  style="position: absolute; left: 10.5cm; top:1.5cm;" >
-                                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                                    <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                                 </h:outputLabel>
 
                                                 <h:outputLabel value="#{inwardSearch.bill.cancelledBill.paymentMethod} / #{inwardSearch.bill.insId}" style="position:absolute;left:4.5cm; top:2.0cm;"  />

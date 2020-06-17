@@ -73,7 +73,7 @@
                 <h:outputLabel value="Bill Date"/>
                 <h:outputLabel/>
                 <h:outputLabel value="#{cc.attrs.bill.createdAt}">
-                    <f:convertDateTime pattern="dd MM yyyy"/>
+                    <f:convertDateTime pattern="dd MM yyyy"  timeZone="Asia/Colombo"></f:convertDateTime>
                 </h:outputLabel>
                 
                 <h:outputLabel/>
@@ -118,7 +118,7 @@
                             <h:outputLabel value="DOE"/>
                         </f:facet>
                         <h:outputLabel value="#{bip.pharmaceuticalBillItem.doe}">
-                            <f:convertDateTime pattern="dd/MM/yy"/>
+                            <f:convertDateTime pattern="dd/MM/yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                         </h:outputLabel>
                     </p:column>
                     

@@ -87,7 +87,7 @@
                                         <h:outputLabel value="Date"/>
                                     </f:facet>
                                     <h:outputLabel value="#{bb.createdAt}" >
-                                        <f:convertDateTime pattern="dd MMM yy"/>
+                                        <f:convertDateTime pattern="dd MMM yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                     </h:outputLabel>
                                    
                                         <h:outputLabel style="color: red;" value=" - " rendered="#{bb.cancelled}">
@@ -96,7 +96,7 @@
                                         <h:outputLabel style="color: red;" value="Canceled at " rendered="#{bb.cancelled}">
                                         </h:outputLabel>
                                         <h:outputLabel style="color: red;" rendered="#{bb.cancelled}" value="#{bb.cancelledBill.createdAt}" >
-                                            <f:convertDateTime pattern="dd MMM yy"/>
+                                            <f:convertDateTime pattern="dd MMM yy"  timeZone="Asia/Colombo"></f:convertDateTime>
                                         </h:outputLabel>
                                                          
                                 </p:column>
