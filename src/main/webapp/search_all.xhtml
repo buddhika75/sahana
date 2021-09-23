@@ -128,14 +128,16 @@
                             </p:column>    
                             <p:column headerText="Client">                              
                                 <h:outputLabel value="#{bill.patient.person.nameWithTitle}" ></h:outputLabel>
+                                Last Edited at #{bill.patient.editedAt} by #{bill.patient.person.editer.name}
                             </p:column>
                             <p:column headerText="Client Phone No">                                
                                 <h:outputLabel value="#{bill.patient.person.phone}" ></h:outputLabel>                                    
                             </p:column>
                             <p:column headerText="Billed By"  >                              
                                 <h:outputLabel value="#{bill.creater.webUserPerson.name}" ></h:outputLabel>
-
                             </p:column>
+                            
+                            
                             <p:column headerText="Payment Method" >                              
                                 <h:outputLabel value="#{bill.paymentMethod}" ></h:outputLabel>                                   
                             </p:column>
