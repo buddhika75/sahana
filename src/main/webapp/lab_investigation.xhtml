@@ -126,11 +126,11 @@
                                         <p:ajax event="change" process="@this" update="reportedAsIx" />
                                     </p:selectBooleanCheckbox>
                                     <h:panelGroup >
-                                        <p:autoComplete converter="ixcon" disabled="#{!investigationController.reportedAs}" 
+                                        <p:autoComplete  converter="ixcon" disabled="#{!investigationController.reportedAs}" 
                                                         widgetVar="aIx2" id="reportedAsIx" 
                                                         forceSelection="true" 
                                                         value="#{investigationController.current.reportedAs}" 
-                                                        completeMethod="#{investigationController.completeMasterItem}" 
+                                                        completeMethod="#{investigationController.completeItem}" 
                                                         var="ix2" itemLabel="#{ix2.name}" 
                                                         itemValue="#{ix2}" size="30"  >
 
@@ -146,6 +146,28 @@
                                         </p:autoComplete>
                                         <p:outputLabel value="(Master Item)" 
                                                        rendered="#{investigationController.current.reportedAs.institution eq null}" ></p:outputLabel>
+                                        <p:tooltip for="reportedAsIx" >
+                                            <h:panelGrid columns="2" >
+                                                <h:outputText value="Name" ></h:outputText>
+                                                <h:outputText value="#{investigationController.current.reportedAs.name}"  ></h:outputText>
+
+                                                <h:outputText value="ID" ></h:outputText>
+                                                <h:outputText value="#{investigationController.current.reportedAs.id}"  ></h:outputText>
+
+                                                <h:outputText value="Institution" ></h:outputText>
+                                                <h:outputText value="#{investigationController.current.reportedAs.institution.name}"  ></h:outputText>
+
+                                                <h:outputText value="Department" ></h:outputText>
+                                                <h:outputText value="#{investigationController.current.reportedAs.department.name}"  ></h:outputText>
+
+                                                <h:outputText value="Deleted" ></h:outputText>
+                                                <h:outputText value="#{investigationController.current.reportedAs.retired}"  ></h:outputText>
+
+
+                                            </h:panelGrid>
+
+                                        </p:tooltip>
+
                                     </h:panelGroup>
 
                                     <p:outputLabel value="Sample" ></p:outputLabel>
@@ -164,7 +186,7 @@
 
                                     <p:outputLabel value="Sample Volume" ></p:outputLabel>
                                     <p:inputText autocomplete="off"  class="pdInputText" value="#{investigationController.current.sampleVolume}"  ></p:inputText>
-                                    
+
                                     <p:outputLabel value="Institution" ></p:outputLabel>
                                     <p:selectOneMenu id="cmbIns"   value="#{investigationController.current.institution}" >
                                         <f:selectItem itemLabel="Please select a Institution"/>
