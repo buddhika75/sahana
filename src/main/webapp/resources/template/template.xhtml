@@ -31,7 +31,21 @@
 
     </h:head>
     <h:body  >
-        <p:panel styleClass="fullSpread" >
+
+        <h:panelGroup rendered="false" >
+            <h1>Server is migrating.</h1>
+            <h2>Please install 
+                <a href="https://anydesk.com/en/downloads/windows" >ANYDESK.</a>  
+            </h2>
+            <h2>
+                Call 071 5812399 with the Anydesk ID.
+            </h2>
+
+
+        </h:panelGroup>
+
+
+        <p:panel rendered="true" styleClass="fullSpread" >
             <p:growl id="publicGrowl" autoUpdate="true"   />
             <h:panelGroup >
                 <h:form>
