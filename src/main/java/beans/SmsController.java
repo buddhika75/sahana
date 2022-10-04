@@ -60,14 +60,14 @@ public class SmsController implements Serializable {
     }
 
     public void sentHutchSms(){
-        System.out.println("sentHutchSms");
+        // System.out.println("sentHutchSms");
         if(message==null || message.trim().equals("")){
-            System.out.println("no message");
+            // System.out.println("no message");
             output = "No Message";
             return;
         }
         if(number==null || number.trim().equals("")){
-            System.out.println("no number");
+            // System.out.println("no number");
             output = "Number";
             return;
         }
@@ -98,7 +98,7 @@ password="eVog@737";
         m.put("NUM", number);
         m.put("MSG", message);
         String res = executePost("https://bulksms.hutch.lk/sendsmsmultimask.php", m);
-        System.out.println("res = " + res);
+        // System.out.println("res = " + res);
         if (res == null) {
             output = "";
         } else if (res.toUpperCase().contains("200")) {
@@ -110,9 +110,9 @@ password="eVog@737";
     
     
     public String executePost(String targetURL, Map<String, String> parameters) {
-        System.out.println("executePost");
-        System.out.println("targetURL = " + targetURL);
-        System.out.println("parameters = " + parameters);
+        // System.out.println("executePost");
+        // System.out.println("targetURL = " + targetURL);
+        // System.out.println("parameters = " + parameters);
         HttpURLConnection connection = null;
         if (parameters != null && !parameters.isEmpty()) {
             targetURL += "?";
@@ -126,7 +126,7 @@ password="eVog@737";
                 pVal = java.net.URLEncoder.encode(m.getValue().toString(), "UTF-8");
             } catch (UnsupportedEncodingException ex) {
                 pVal = "";
-                System.out.println("ex = " + ex);
+                // System.out.println("ex = " + ex);
             }
             String pPara = (String) m.getKey();
             targetURL += pPara + "=" + pVal.toString() + "&";
@@ -134,7 +134,7 @@ password="eVog@737";
 
 
         try {
-            //System.out.println("targetURL = " + targetURL);
+            //// System.out.println("targetURL = " + targetURL);
             //Create connection
             //Create connection
             //Create connection
@@ -143,26 +143,26 @@ password="eVog@737";
             //Create connection
             //Create connection
             //Create connection
-            System.out.println("1");
+            // System.out.println("1");
             URL url = new URL(targetURL);
-            System.out.println("2");
+            // System.out.println("2");
             connection = (HttpURLConnection) url.openConnection();
-            System.out.println("3");
+            // System.out.println("3");
             connection.setRequestMethod("GET");
-            System.out.println("4");
+            // System.out.println("4");
             connection.setDoOutput(true);
-            System.out.println("4");
+            // System.out.println("4");
             //Send request
             DataOutputStream wr = new DataOutputStream(
                     connection.getOutputStream());
-            System.out.println("5");
+            // System.out.println("5");
             wr.writeBytes(targetURL);
-            System.out.println("6");
+            // System.out.println("6");
             wr.flush();
-            System.out.println("wr = " + wr);
-            System.out.println("7");
+            // System.out.println("wr = " + wr);
+            // System.out.println("7");
             wr.close();
-            System.out.println("8");
+            // System.out.println("8");
             //Get Response  
             InputStream is = connection.getInputStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
@@ -175,7 +175,7 @@ password="eVog@737";
             rd.close();
             return response.toString();
         } catch (Exception e) {
-            System.out.println("e = " + e.getMessage());
+            // System.out.println("e = " + e.getMessage());
             return null;
         } finally {
             if (connection != null) {
@@ -186,11 +186,11 @@ password="eVog@737";
 
     
     public void sendSms() {
-        System.out.println("sendSms");
+        // System.out.println("sendSms");
         if (userName == null || password == null || userAlias == null || number == null
                 || message == null) {
             output = "failure";
-            System.out.println("SMS sending failure. No sufficient data provided.");
+            // System.out.println("SMS sending failure. No sufficient data provided.");
             return;
         }
 
@@ -223,17 +223,17 @@ password="eVog@737";
             } else {
                 output = "failure " + ret;
             }
-            System.out.println("output = " + output);
+            // System.out.println("output = " + output);
             return;
         } catch (Exception ex) {
             output = "failure " + ex.getMessage();
-            System.out.println("ex.getMessage() = " + ex.getMessage());
+            // System.out.println("ex.getMessage() = " + ex.getMessage());
             return;
         }
     }
 
     public String executePostWithJson(String url, String json) {
-        System.out.println("executePostWithJson");
+        // System.out.println("executePostWithJson");
         try {
             CloseableHttpClient httpclient = HttpClients.createDefault();
             HttpPost httpPost = new HttpPost(url);
@@ -241,8 +241,8 @@ password="eVog@737";
             HttpEntity stringEntity = new StringEntity(JSON_STRING,ContentType.APPLICATION_JSON);
             httpPost.setEntity(stringEntity);
             CloseableHttpResponse response2 = httpclient.execute(httpPost);
-            System.out.println("response2 = " + response2);
-            System.out.println("response2 = " + response2.toString());
+            // System.out.println("response2 = " + response2);
+            // System.out.println("response2 = " + response2.toString());
             return response2.toString();
         } catch (IOException ex) {
             Logger.getLogger(SmsController.class.getName()).log(Level.SEVERE, null, ex);
