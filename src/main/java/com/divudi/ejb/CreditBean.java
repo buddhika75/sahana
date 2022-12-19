@@ -280,8 +280,8 @@ public class CreditBean {
         hm.put("refBill", refBill);
 //        hm.put("pm", PaymentMethod.Credit);
         hm.put("bts", billTypes);
-        System.out.println("hm = " + hm);
-        System.out.println("getBillFacade().findDoubleByJpql(sql, hm, TemporalType.DATE) = " + getBillFacade().findDoubleByJpql(sql, hm, TemporalType.DATE));
+        // System.out.println("hm = " + hm);
+        // System.out.println("getBillFacade().findDoubleByJpql(sql, hm, TemporalType.DATE) = " + getBillFacade().findDoubleByJpql(sql, hm, TemporalType.DATE));
         return getBillFacade().findDoubleByJpql(sql, hm, TemporalType.DATE);
     }
 

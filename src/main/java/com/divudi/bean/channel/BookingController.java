@@ -166,7 +166,7 @@ public class BookingController implements Serializable {
     public boolean errorCheckForSerial() {
         boolean alreadyExists = false;
         for (BillSession bs : billSessions) {
-            //System.out.println("billSessions" + bs.getId());
+            //// System.out.println("billSessions" + bs.getId());
 
             if (selectedBillSession.equals(bs)) {
 
@@ -175,12 +175,12 @@ public class BookingController implements Serializable {
                     alreadyExists = true;
                 }
             }
-            System.out.println("bs = " + bs);
-            System.out.println("selectedBillSession = " + selectedBillSession);
+            // System.out.println("bs = " + bs);
+            // System.out.println("selectedBillSession = " + selectedBillSession);
             if (!bs.equals(selectedBillSession)) {
                 for (BillItem bi : bs.getBill().getBillItems()) {
-                    System.out.println("bi.getBillSession().getSerialNo() = " + bi.getBillSession().getSerialNo());
-                    System.out.println("serealNo = " + serealNo);
+                    // System.out.println("bi.getBillSession().getSerialNo() = " + bi.getBillSession().getSerialNo());
+                    // System.out.println("serealNo = " + serealNo);
                     if (serealNo == bi.getBillSession().getSerialNo()) {
                         System.err.println("Equals");
                         alreadyExists = true;
@@ -201,12 +201,12 @@ public class BookingController implements Serializable {
             return true;
         }
         for (BillSession bs : billSessions) {
-            System.out.println("bs = " + bs);
-            System.out.println("selectedBillSession = " + selectedBillSession);
+            // System.out.println("bs = " + bs);
+            // System.out.println("selectedBillSession = " + selectedBillSession);
             if (!bs.equals(selectedBillSession)) {
                 for (BillItem bi : bs.getBill().getBillItems()) {
-                    System.out.println("bi.getBillSession().getSerialNo() = " + bi.getBillSession().getSerialNo());
-                    System.out.println("serealNo = " + serealNo);
+                    // System.out.println("bi.getBillSession().getSerialNo() = " + bi.getBillSession().getSerialNo());
+                    // System.out.println("serealNo = " + serealNo);
                     if (serealNo == bi.getBillSession().getSerialNo()) {
                         System.err.println("Equals");
                         UtilityController.addErrorMessage("This Number Is Alredy Exsist");
@@ -231,9 +231,9 @@ public class BookingController implements Serializable {
 //    public void errorCheckChannelNumber() {
 //
 //        for (BillSession bs : billSessions) {
-//            //System.out.println("billSessions" + bs.getName());
+//            //// System.out.println("billSessions" + bs.getName());
 //            for (BillItem bi : getSelectedBillSession().getBill().getBillItems()) {
-//                //System.out.println("billitem" + bi.getId());
+//                //// System.out.println("billitem" + bi.getId());
 //                if (bs.getSerialNo() == bi.getBillSession().getSerialNo()) {
 //                    UtilityController.addErrorMessage("Number you entered already exist");
 //                    setSelectedBillSession(bs);
@@ -259,13 +259,13 @@ public class BookingController implements Serializable {
 
         for (BillItem bi : getSelectedBillSession().getBill().getBillItems()) {
             bi.getBillSession().setSerialNo(serealNo);
-            System.out.println("bi = " + bi.getBillSession().getSerialNo());
-            System.out.println("serealNo = " + serealNo);
+            // System.out.println("bi = " + bi.getBillSession().getSerialNo());
+            // System.out.println("serealNo = " + serealNo);
             getBillItemFacade().edit(bi);
         }
 
         getBillSessionFacade().edit(getSelectedBillSession());
-        //System.out.println(getSelectedBillSession().getBill().getPatient());
+        //// System.out.println(getSelectedBillSession().getBill().getPatient());
         UtilityController.addSuccessMessage("Serial Updated");
     }
 
@@ -289,7 +289,7 @@ public class BookingController implements Serializable {
             } else {
                 sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
             }
-            ////System.out.println(sql);
+            ////// System.out.println(sql);
             suggestions = getStaffFacade().findBySQL(sql);
         }
         return suggestions;
@@ -320,7 +320,7 @@ public class BookingController implements Serializable {
             sql = "select p from Staff p where p.retired=false order by p.person.name";
             consultants = getStaffFacade().findBySQL(sql);
         }
-//        //System.out.println("consultants = " + consultants);
+//        //// System.out.println("consultants = " + consultants);
         setStaff(null);
     }
 
@@ -490,10 +490,10 @@ public class BookingController implements Serializable {
             e.setTitle(s.getName());
             e.setStartDate(s.getTransStartTime());
             e.setEndDate(s.getTransEndTime());
-            System.out.println("e = " + e);
+            // System.out.println("e = " + e);
             eventModel.addEvent(e);
         }
-        System.out.println("eventModel = " + eventModel);
+        // System.out.println("eventModel = " + eventModel);
     }
 
     public void onEventSelect(SelectEvent selectEvent) {
@@ -584,7 +584,7 @@ public class BookingController implements Serializable {
         hh.put("ssDate", getSelectedServiceSession().getSessionAt());
         hh.put("ss", getSelectedServiceSession());
         billSessions = getBillSessionFacade().findBySQL(sql, hh, TemporalType.DATE);
-        System.out.println("billSessions" + billSessions);
+        // System.out.println("billSessions" + billSessions);
 
     }
 
@@ -608,7 +608,7 @@ public class BookingController implements Serializable {
         hh.put("ssDate", getSelectedServiceSession().getSessionAt());
         hh.put("ss", getSelectedServiceSession());
         billSessions = getBillSessionFacade().findBySQL(sql, hh, TemporalType.DATE);
-        System.out.println("billSessions" + billSessions);
+        // System.out.println("billSessions" + billSessions);
 
     }
 

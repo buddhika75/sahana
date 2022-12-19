@@ -172,7 +172,7 @@ public class SheduleController implements Serializable {
             } else {
                 sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
             }
-            ////System.out.println(sql);
+            ////// System.out.println(sql);
             suggestions = getStaffFacade().findBySQL(sql,m);
         }
         return suggestions;
@@ -187,7 +187,7 @@ public class SheduleController implements Serializable {
         } else {
             sql = "select p from Staff p where p.retired=false order by p.person.name";
         }
-        ////System.out.println(sql);
+        ////// System.out.println(sql);
         suggestions = getStaffFacade().findBySQL(sql);
 
         return suggestions;
@@ -409,7 +409,7 @@ public class SheduleController implements Serializable {
 
     public void saveSelected() {
         System.err.println("1 " + getItemFees().size());
-        //System.out.println("session name"+current.getName());
+        //// System.out.println("session name"+current.getName());
         if (checkError()) {
             return;
         }
@@ -425,14 +425,14 @@ public class SheduleController implements Serializable {
         getCurrent().setStaff(currentStaff);
         if (getCurrent().getId() != null && getCurrent().getId() > 0) {
             getFacade().edit(getCurrent());
-            System.out.println("getCurrent().getId() = " + getCurrent().getId());
+            // System.out.println("getCurrent().getId() = " + getCurrent().getId());
             System.err.println("edit Ses");
             UtilityController.addSuccessMessage("Updated Successfully.");
         } else {
             getCurrent().setCreatedAt(Calendar.getInstance(TimeZone.getTimeZone("IST")).getTime());
             getCurrent().setCreater(getSessionController().getLoggedUser());
             getFacade().create(getCurrent());
-            System.out.println("getCurrent().getId() = " + getCurrent().getId());
+            // System.out.println("getCurrent().getId() = " + getCurrent().getId());
             System.err.println("cre Ses");
             UtilityController.addSuccessMessage("Saved Successfully");
         }

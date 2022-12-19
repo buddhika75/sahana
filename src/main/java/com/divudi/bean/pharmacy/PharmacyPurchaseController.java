@@ -330,10 +330,10 @@ public class PharmacyPurchaseController implements Serializable {
         double grossTotal = 0.0;
         if (getBill().getDiscount() > 0) {
             grossTotal = getBill().getTotal() + getBill().getDiscount();
-            //System.out.println("gross" + grossTotal);
-            //System.out.println("net1" + getBill().getNetTotal());
+            //// System.out.println("gross" + grossTotal);
+            //// System.out.println("net1" + getBill().getNetTotal());
             getBill().setNetTotal(grossTotal);
-            //System.out.println("net2" + getBill().getNetTotal());
+            //// System.out.println("net2" + getBill().getNetTotal());
         }
 
     }
@@ -431,7 +431,7 @@ public class PharmacyPurchaseController implements Serializable {
         p.setPaymentMethod(pm);
 
         p.setPaidValue(p.getBill().getNetTotal());
-        System.out.println("p.getPaidValue() = " + p.getPaidValue());
+        // System.out.println("p.getPaidValue() = " + p.getPaidValue());
 
         if (p.getId() == null) {
             getPaymentFacade().create(p);

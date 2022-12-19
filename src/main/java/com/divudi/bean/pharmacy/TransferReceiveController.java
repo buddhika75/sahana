@@ -228,7 +228,7 @@ public class TransferReceiveController implements Serializable {
     private double calTotal() {
         double value = 0;
         int serialNo = 0;
-        System.out.println("preference" + sessionController.getInstitutionPreference().isTranferNetTotalbyRetailRate());
+        // System.out.println("preference" + sessionController.getInstitutionPreference().isTranferNetTotalbyRetailRate());
 
         if (sessionController.getInstitutionPreference().isTranferNetTotalbyRetailRate()) {
             for (BillItem b : getBillItems()) {

@@ -248,7 +248,7 @@ public class StaffLeaveApplicationFormController implements Serializable {
     }
 
     public StaffLeaveEntitle fetchLeaveEntitle(Staff staff, LeaveType leaveType, Date frm) {
-        System.out.println("frm = " + frm);
+        // System.out.println("frm = " + frm);
 
         String sql = "select  ss "
                 + " from StaffLeaveEntitle ss "
@@ -261,7 +261,7 @@ public class StaffLeaveApplicationFormController implements Serializable {
         hm.put("ltp", leaveType);
         hm.put("frm", frm);
         StaffLeaveEntitle stf = staffLeaveEntitleFacade.findFirstBySQL(sql, hm, TemporalType.DATE);
-        System.out.println("stf = " + stf);
+        // System.out.println("stf = " + stf);
 
         return stf;
 
@@ -302,12 +302,12 @@ public class StaffLeaveApplicationFormController implements Serializable {
                 getCurrentLeaveForm().getStaff(), getCurrentLeaveForm().getLeaveType(),
                 getCurrentLeaveForm().getFromDate(),
                 getCurrentLeaveForm().getToDate());
-        //System.out.println("getCurrentLeaveForm().getStaff() = " + getCurrentLeaveForm().getStaff());
-        //System.out.println("getCurrentLeaveForm().getLeaveType() = " + getCurrentLeaveForm().getLeaveType());
-        //System.out.println("commonFunctions.getLastDayOfYear(getCurrentLeaveForm().getFromDate()) = " + commonFunctions.getLastDayOfYear(getCurrentLeaveForm().getFromDate()));
-        //System.out.println("commonFunctions.getFirstDayOfYear(getCurrentLeaveForm().getFromDate()) = " + commonFunctions.getFirstDayOfYear(getCurrentLeaveForm().getFromDate()));
-        //System.out.println("staffLeaveEntitle = " + staffLeaveEntitle);
-        //System.out.println("leaveTypeLocal.isExceptionalLeave() = " + leaveTypeLocal.isExceptionalLeave());
+        //// System.out.println("getCurrentLeaveForm().getStaff() = " + getCurrentLeaveForm().getStaff());
+        //// System.out.println("getCurrentLeaveForm().getLeaveType() = " + getCurrentLeaveForm().getLeaveType());
+        //// System.out.println("commonFunctions.getLastDayOfYear(getCurrentLeaveForm().getFromDate()) = " + commonFunctions.getLastDayOfYear(getCurrentLeaveForm().getFromDate()));
+        //// System.out.println("commonFunctions.getFirstDayOfYear(getCurrentLeaveForm().getFromDate()) = " + commonFunctions.getFirstDayOfYear(getCurrentLeaveForm().getFromDate()));
+        //// System.out.println("staffLeaveEntitle = " + staffLeaveEntitle);
+        //// System.out.println("leaveTypeLocal.isExceptionalLeave() = " + leaveTypeLocal.isExceptionalLeave());
 
         if (!leaveTypeLocal.isExceptionalLeave() && staffLeaveEntitle == null) {
             UtilityController.addErrorMessage("Please Set Leave Enttile count for this Staff in Administration");

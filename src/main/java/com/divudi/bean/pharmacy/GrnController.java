@@ -485,10 +485,10 @@ public class GrnController implements Serializable {
         double grossTotal = 0.0;
         if (getGrnBill().getDiscount() > 0) {
             grossTotal = getGrnBill().getTotal() + getGrnBill().getDiscount();
-            //System.out.println("gross" + grossTotal);
-            //System.out.println("net1" + getBill().getNetTotal());
+            //// System.out.println("gross" + grossTotal);
+            //// System.out.println("net1" + getBill().getNetTotal());
             getGrnBill().setNetTotal(grossTotal);
-            //System.out.println("net2" + getBill().getNetTotal());
+            //// System.out.println("net2" + getBill().getNetTotal());
         }
     }
     
@@ -516,8 +516,8 @@ public class GrnController implements Serializable {
     public Payment createPayment(Bill bill, PaymentMethod pm) {
         Payment p = new Payment();
         p.setBill(bill);
-        System.out.println("bill.getNetTotal() = " + bill.getNetTotal());
-        System.out.println("bill.getCashPaid() = " + bill.getCashPaid());
+        // System.out.println("bill.getNetTotal() = " + bill.getNetTotal());
+        // System.out.println("bill.getCashPaid() = " + bill.getCashPaid());
         setPaymentMethodData(p, pm);
         return p;
     }
@@ -531,7 +531,7 @@ public class GrnController implements Serializable {
         p.setPaymentMethod(pm);
 
         p.setPaidValue(p.getBill().getNetTotal());
-        System.out.println("p.getPaidValue() = " + p.getPaidValue());
+        // System.out.println("p.getPaidValue() = " + p.getPaidValue());
 
         if (p.getId() == null) {
             getPaymentFacade().create(p);

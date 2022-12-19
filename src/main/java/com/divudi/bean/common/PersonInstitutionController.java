@@ -169,14 +169,14 @@ public class PersonInstitutionController implements Serializable {
             return;
         }
 
-        System.out.println("selectedList = " + selectedList.size());
+        // System.out.println("selectedList = " + selectedList.size());
         for (Staff s : selectedList) {
             PersonInstitution pi = findDeactivatedPersonInstitution(institution, s, true);
             if (findDeactivatedPersonInstitution(institution, s, false) != null) {
                 System.err.println("Alredy Added");
                 continue;
             }
-            System.out.println("pi = " + pi);
+            // System.out.println("pi = " + pi);
             if (pi == null) {
                 PersonInstitution p = new PersonInstitution();
                 p.setStaff(s);
@@ -186,9 +186,9 @@ public class PersonInstitutionController implements Serializable {
                 p.setType(PersonInstitutionType.Channelling);
                 getPersonInstitutionFacade().create(p);
             } else {
-                System.out.println("pi.getInstitution().getName() = " + pi.getInstitution().getName());
-                System.out.println("pi.getStaff().getPerson().getNameWithInitials() = " + pi.getStaff().getPerson().getNameWithInitials());
-                System.out.println("pi.isRetired() = " + pi.isRetired());
+                // System.out.println("pi.getInstitution().getName() = " + pi.getInstitution().getName());
+                // System.out.println("pi.getStaff().getPerson().getNameWithInitials() = " + pi.getStaff().getPerson().getNameWithInitials());
+                // System.out.println("pi.isRetired() = " + pi.isRetired());
                 pi.setRetired(false);
                 getPersonInstitutionFacade().edit(pi);
             }
@@ -220,7 +220,7 @@ public class PersonInstitutionController implements Serializable {
             return;
         }
         institutionPersons = findPersonInstitutions(reportKeyWord.getInstitution(), reportKeyWord.getStaff(),reportKeyWord.getSpeciality());
-        System.out.println("institutionPersons = " + institutionPersons.size());
+        // System.out.println("institutionPersons = " + institutionPersons.size());
 
     }
 
@@ -269,9 +269,9 @@ public class PersonInstitutionController implements Serializable {
         withOutInstitutionPersonsStaffs.addAll(staffsAll);
         withOutInstitutionPersonsStaffs.removeAll(staffsWithInstitutionPersons);
 
-        System.out.println("staffsAll = " + staffsAll.size());
-        System.out.println("staffsWithInstitutionPersons = " + staffsWithInstitutionPersons.size());
-        System.out.println("withOutInstitutionPersonsStaffs = " + withOutInstitutionPersonsStaffs.size());
+        // System.out.println("staffsAll = " + staffsAll.size());
+        // System.out.println("staffsWithInstitutionPersons = " + staffsWithInstitutionPersons.size());
+        // System.out.println("withOutInstitutionPersonsStaffs = " + withOutInstitutionPersonsStaffs.size());
     }
 
     public PersonInstitution findDeactivatedPersonInstitution(Institution i, Staff s, boolean b) {

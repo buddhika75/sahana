@@ -236,10 +236,10 @@ public class ServiceSession extends Item implements Serializable {
     public Date getTransStartTime() {
         Calendar st = Calendar.getInstance();
         Calendar start = Calendar.getInstance();
-        System.out.println("sessionAt = " + sessionAt);
-        System.out.println("startingTime = " + startingTime);
+        // System.out.println("sessionAt = " + sessionAt);
+        // System.out.println("startingTime = " + startingTime);
         if (sessionAt == null || startingTime == null) {
-            System.out.println("return null");
+            // System.out.println("return null");
             return null;
         }
         st.setTime(sessionAt);
@@ -248,15 +248,15 @@ public class ServiceSession extends Item implements Serializable {
         st.set(Calendar.MINUTE, start.get(Calendar.MINUTE));
         st.set(Calendar.SECOND, start.get(Calendar.SECOND));
         st.set(Calendar.MILLISECOND, start.get(Calendar.MILLISECOND));
-        System.out.println("st = " + st);
+        // System.out.println("st = " + st);
         return st.getTime();
     }
 
     public Date getTransEndTime() {
         Calendar st = Calendar.getInstance();
         Calendar ending = Calendar.getInstance();
-        System.out.println("sessionAt = " + sessionAt);
-        System.out.println("getEndingTime() = " + getEndingTime());
+        // System.out.println("sessionAt = " + sessionAt);
+        // System.out.println("getEndingTime() = " + getEndingTime());
         if (sessionAt == null || getEndingTime() == null) {
             return null;
         }

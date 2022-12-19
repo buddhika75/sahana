@@ -225,7 +225,7 @@ public class CreditSummeryController implements Serializable {
     
 
     public List<DailyCash> getDailyCredit() {
-        // ////System.out.println("Starting : ");
+        // ////// System.out.println("Starting : ");
         if (dailyCash == null) {
             dailyCash = new ArrayList<>();
 
@@ -343,7 +343,7 @@ public class CreditSummeryController implements Serializable {
     }
 
     public List<DailyCredit> getDailyCreditByBill() {
-        // ////System.out.println("Starting : ");
+        // ////// System.out.println("Starting : ");
         if (dailyCredit == null) {
             dailyCredit = new ArrayList<>();
 

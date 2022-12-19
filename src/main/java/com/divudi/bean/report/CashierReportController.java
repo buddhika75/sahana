@@ -125,10 +125,10 @@ public class CashierReportController implements Serializable {
         BillsTotals newB = new BillsTotals();
         newB.setName(billType.getLabel() + " " + suffix);
         newB.setCard(calTotalValueOwnWithoutPro(webUser, bill, PaymentMethod.Card, billType));
-        System.out.println("newB.getCard() = " + newB.getCard());
+        // System.out.println("newB.getCard() = " + newB.getCard());
         finalCardTot += newB.getCard();
         newB.setCash(calTotalValueOwnWithoutPro(webUser, bill, PaymentMethod.Cash, billType));
-        System.out.println("newB.getCash = " + newB.getCash());
+        // System.out.println("newB.getCash = " + newB.getCash());
         finalCashTot += newB.getCash();
         newB.setCheque(calTotalValueOwnWithoutPro(webUser, bill, PaymentMethod.Cheque, billType));
         finalChequeTot += newB.getCheque();

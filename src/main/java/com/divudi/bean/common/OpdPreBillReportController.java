@@ -231,7 +231,7 @@ public class OpdPreBillReportController implements Serializable {
     public void createCashierTableByAllUserPayment(boolean detail) {
         System.err.println("in");
         webUserBillsTotals = new ArrayList<>();
-        System.out.println("getCashiers() = " + getCashiers().size());
+        // System.out.println("getCashiers() = " + getCashiers().size());
 
         finalCashTot = 0.0;
         finalCardTot = 0.0;
@@ -240,7 +240,7 @@ public class OpdPreBillReportController implements Serializable {
         finalSlipTot = 0.0;
 
         for (WebUser wu : getCashiers()) {
-            System.out.println("wu.getWebUserPerson().getName() = " + wu.getWebUserPerson().getName());
+            // System.out.println("wu.getWebUserPerson().getName() = " + wu.getWebUserPerson().getName());
             WebUserBillsTotal tmp = new WebUserBillsTotal();
             tmp.setWebUser(wu);
             List<BillsTotals> billls = new ArrayList<>();
@@ -250,10 +250,10 @@ public class OpdPreBillReportController implements Serializable {
             double uCredit = 0;
             double uSlip = 0;
             for (BillType btp : getCashFlowBillTypes()) {
-                System.out.println("btp = " + btp);
-                System.out.println("btp.getLabel() = " + btp.getLabel());
+                // System.out.println("btp = " + btp);
+                // System.out.println("btp.getLabel() = " + btp.getLabel());
                 for (Bill b : getBillClassTypes) {
-                    System.out.println("b.getBillClassType() = " + b.getBillClassType());
+                    // System.out.println("b.getBillClassType() = " + b.getBillClassType());
                     BillsTotals billsTotals = createTotalsPayment(b, btp, wu, getDepartment());
                     if (billsTotals.getCard() != 0
                             || billsTotals.getCash() != 0
@@ -373,8 +373,8 @@ public class OpdPreBillReportController implements Serializable {
         m.put("ins", getSessionController().getInstitution());
 
         if (getPaymentFacade().findDoubleByJpql(sql, m, TemporalType.TIMESTAMP) > 0) {
-            System.out.println("m = " + m);
-            System.out.println("sql = " + sql);
+            // System.out.println("m = " + m);
+            // System.out.println("sql = " + sql);
         }
 
         return getPaymentFacade().findDoubleByJpql(sql, m, TemporalType.TIMESTAMP);
@@ -419,9 +419,9 @@ public class OpdPreBillReportController implements Serializable {
         m.put("bt", bt);
         m.put("ins", getSessionController().getInstitution());
 
-        System.out.println("paymentMethod = " + paymentMethod);
-        System.out.println("sql = " + sql);
-        System.out.println("getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP) = " + getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP));
+        // System.out.println("paymentMethod = " + paymentMethod);
+        // System.out.println("sql = " + sql);
+        // System.out.println("getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP) = " + getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP));
 
         return getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP);
 
@@ -461,9 +461,9 @@ public class OpdPreBillReportController implements Serializable {
         m.put("ins", getSessionController().getInstitution());
 
         if (getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP) != null) {
-            System.out.println("paymentMethod = " + paymentMethod);
-            System.out.println("sql = " + sql);
-            System.out.println("getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP) = " + getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP));
+            // System.out.println("paymentMethod = " + paymentMethod);
+            // System.out.println("sql = " + sql);
+            // System.out.println("getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP) = " + getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP));
         }
 
         return getPaymentFacade().findAggregates(sql, m, TemporalType.TIMESTAMP);
@@ -475,17 +475,17 @@ public class OpdPreBillReportController implements Serializable {
         List<Bill> bs = new ArrayList<>();
         for (PaymentMethod pm : getPaymentMethods) {
             List<Object[]> objects = getBillWithTotal(b, pm, wu, d, td, billType);
-            System.out.println("objects = " + objects);
+            // System.out.println("objects = " + objects);
             if (objects != null) {
                 for (Object[] obj : objects) {
                     if (obj[0] != null) {
                         Bill bb = new Bill();
                         bb = (Bill) obj[0];
-                        System.out.println("bb = " + bb);
+                        // System.out.println("bb = " + bb);
                         bb.setNetTotal((double) obj[1]);
-                        System.out.println("bb = " + bb.getNetTotal());
+                        // System.out.println("bb = " + bb.getNetTotal());
                         bb.setPaymentMethod(pm);
-                        System.out.println("bb = " + bb.getPaymentMethod());
+                        // System.out.println("bb = " + bb.getPaymentMethod());
                         if (bb != null) {
                             bs.add(bb);
                         }
@@ -504,23 +504,23 @@ public class OpdPreBillReportController implements Serializable {
         for (PaymentMethod paymentMethod : getPaymentMethods) {
             switch (paymentMethod) {
                 case Cash:
-                    System.out.println("1.calValue Cash = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
+                    // System.out.println("1.calValue Cash = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     billsTotals.setCash(calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     break;
                 case Credit:
-                    System.out.println("2.calValue Credit = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
+                    // System.out.println("2.calValue Credit = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     billsTotals.setCredit(calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     break;
                 case Card:
-                    System.out.println("3.calValue Card = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
+                    // System.out.println("3.calValue Card = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     billsTotals.setCard(calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     break;
                 case Slip:
-                    System.out.println("4.calValue Slip = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
+                    // System.out.println("4.calValue Slip = " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     billsTotals.setSlip(calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     break;
                 case Cheque:
-                    System.out.println("5.calValue Cheque= " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
+                    // System.out.println("5.calValue Cheque= " + calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     billsTotals.setCheque(calValue(b, paymentMethod, getWebUser(), d, td, billType));
                     break;
             }
@@ -539,11 +539,11 @@ public class OpdPreBillReportController implements Serializable {
                     if (obj[0] != null) {
                         Bill bb = new Bill();
                         bb = (Bill) obj[0];
-                        System.out.println("bb = " + bb);
+                        // System.out.println("bb = " + bb);
                         bb.setNetTotal((double) obj[1]);
-                        System.out.println("bb = " + bb.getNetTotal());
+                        // System.out.println("bb = " + bb.getNetTotal());
                         bb.setPaymentMethod(pm);
-                        System.out.println("bb = " + bb.getPaymentMethod());
+                        // System.out.println("bb = " + bb.getPaymentMethod());
                         if (bb != null) {
                             bs.add(bb);
                         }
@@ -551,11 +551,11 @@ public class OpdPreBillReportController implements Serializable {
                 }
             }
         }
-        System.out.println("bs = " + bs.size());
+        // System.out.println("bs = " + bs.size());
         billsTotals.setBills(bs);
         for (PaymentMethod paymentMethod : getPaymentMethods) {
             if (calValuePayment(b, paymentMethod, getWebUser(), d, billType) > 0) {
-                System.out.println("calValue " + paymentMethod + " = " + calValuePayment(b, paymentMethod, getWebUser(), d, billType));
+                // System.out.println("calValue " + paymentMethod + " = " + calValuePayment(b, paymentMethod, getWebUser(), d, billType));
             }
             switch (paymentMethod) {
                 case Cash:
@@ -594,10 +594,10 @@ public class OpdPreBillReportController implements Serializable {
             name += "Cancelled";
         }
         billsTotals.setName(name);
-        System.out.println("name = " + name);
+        // System.out.println("name = " + name);
         for (PaymentMethod paymentMethod : getPaymentMethods) {
             if (calValuePayment(b, paymentMethod, getWebUser(), d, billType) > 0) {
-                System.out.println("calValue " + paymentMethod + " = " + calValuePayment(b, paymentMethod, getWebUser(), d, billType));
+                // System.out.println("calValue " + paymentMethod + " = " + calValuePayment(b, paymentMethod, getWebUser(), d, billType));
             }
             switch (paymentMethod) {
                 case Cash:
@@ -627,7 +627,7 @@ public class OpdPreBillReportController implements Serializable {
         List<WebUser> cashiers = new ArrayList<>();
         BillType[] btpArr = getCashFlowBillTypes();
         List<BillType> btpList = Arrays.asList(btpArr);
-        System.out.println("btpList = " + btpList);
+        // System.out.println("btpList = " + btpList);
         sql = "select us from "
                 + " Payment p"
                 + " join p.bill b "
@@ -641,8 +641,8 @@ public class OpdPreBillReportController implements Serializable {
         temMap.put("fromDate", getFromDate());
         temMap.put("btp", btpList);
         temMap.put("ins", sessionController.getInstitution());
-        System.out.println("sql = " + sql);
-        System.out.println("temMap = " + temMap);
+        // System.out.println("sql = " + sql);
+        // System.out.println("temMap = " + temMap);
         cashiers = getWebUserFacade().findBySQL(sql, temMap, TemporalType.TIMESTAMP);
         if (cashiers == null) {
             cashiers = new ArrayList<>();
@@ -674,7 +674,7 @@ public class OpdPreBillReportController implements Serializable {
     }
 
     public void calTotals(List<BillsTotals> bts) {
-        System.out.println("bts.size() = " + bts.size());
+        // System.out.println("bts.size() = " + bts.size());
         double cash=0.0;
         double credit=0.0;
         double card=0.0;
@@ -687,7 +687,7 @@ public class OpdPreBillReportController implements Serializable {
             cheque+=bt.getCheque();
             slip+=bt.getSlip();
         }
-        System.out.println("Totals = cash - " + cash+" - card - "+card+" - credit - "+credit+" - cheque - "+cheque+" - slip - "+slip);
+        // System.out.println("Totals = cash - " + cash+" - card - "+card+" - credit - "+credit+" - cheque - "+cheque+" - slip - "+slip);
         BillsTotals tr=new BillsTotals();
         totalRow=new ArrayList<>();
         tr.setName("Final Total");

@@ -35,15 +35,12 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
-import org.eclipse.persistence.annotations.Cache;
-import org.eclipse.persistence.annotations.CacheType;
 
 /**
  *
  * @author buddhika
  */
 @Entity
-@Table(name = "bill")
 @NamedQueries({
     @NamedQuery(name = "Bill.findAll", query = "SELECT b FROM Bill b"),
     @NamedQuery(name = "Bill.findById", query = "SELECT b FROM Bill b WHERE b.id = :id")})
@@ -113,10 +110,12 @@ public class Bill implements Serializable {
     //Approve
     @ManyToOne
     WebUser approveUser;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
     Date approveAt;
     //Pharmacy
-    @Temporal(javax.persistence.TemporalType.DATE)
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    @Transient
     Date invoiceDate;
     //Enum
     @Enumerated(EnumType.STRING)
@@ -220,7 +219,8 @@ public class Bill implements Serializable {
     //Edited Properties
     @ManyToOne
     private WebUser editor;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
     private Date editedAt;
     //Checking Property
     @ManyToOne
@@ -239,7 +239,8 @@ public class Bill implements Serializable {
     PaymentScheme paymentScheme;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date billDate;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     Date billTime;
     @Transient
     String billClass;
@@ -283,19 +284,21 @@ public class Bill implements Serializable {
     //Denormalization
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     Date appointmentAt;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
     Date paidAt;
     @ManyToOne
     Bill paidBill;
     double qty;
     @Transient
     double transTotalSaleValue;
-    
+
     //Sms Info
     private Boolean smsed = false;
     @ManyToOne
     private WebUser smsedUser;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Transient
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date smsedAt;
     @OneToMany(mappedBy = "bill")
     private List<Sms> sentSmses;
@@ -307,7 +310,7 @@ public class Bill implements Serializable {
     public void setTransTotalSaleValue(double transTotalSaleValue) {
         this.transTotalSaleValue = transTotalSaleValue;
     }
-    
+
     public double getQty() {
         return qty;
     }
@@ -335,8 +338,6 @@ public class Bill implements Serializable {
     public void setBillTotal(double billTotal) {
         this.billTotal = billTotal;
     }
-    
-    
 
     private boolean paid;
 
@@ -365,6 +366,9 @@ public class Bill implements Serializable {
     }
 
     public Date getCheckeAt() {
+        if (checkeAt == null) {
+            checkeAt = new Date();
+        }
         return checkeAt;
     }
 
@@ -552,11 +556,11 @@ public class Bill implements Serializable {
     }
 
     public double getDiscountPercentPharmacy() {
-        //System.out.println("getting discount percent");
-//        //System.out.println("bill item"+getBillItems());
-//        //System.out.println(getBillItems().get(0).getPriceMatrix());
+        //// System.out.println("getting discount percent");
+//        //// System.out.println("bill item"+getBillItems());
+//        //// System.out.println(getBillItems().get(0).getPriceMatrix());
         if (!getBillItems().isEmpty() && getBillItems().get(0).getPriceMatrix() != null) {
-            //System.out.println("sys inside");
+            //// System.out.println("sys inside");
             discountPercent = getBillItems().get(0).getPriceMatrix().getDiscountPercent();
         }
 
@@ -678,6 +682,9 @@ public class Bill implements Serializable {
     }
 
     public Date getBillDate() {
+        if (billDate == null) {
+            billDate = new Date();
+        }
         return billDate;
     }
 
@@ -686,6 +693,9 @@ public class Bill implements Serializable {
     }
 
     public Date getBillTime() {
+        if (billTime == null) {
+            billTime = new Date();
+        }
         return billTime;
     }
 
@@ -858,6 +868,9 @@ public class Bill implements Serializable {
     }
 
     public Date getCreatedAt() {
+        if (createdAt == null) {
+            createdAt = new Date();
+        }
         return createdAt;
     }
 
@@ -882,6 +895,9 @@ public class Bill implements Serializable {
     }
 
     public Date getRetiredAt() {
+        if (retiredAt == null) {
+            retiredAt = new Date();
+        }
         return retiredAt;
     }
 
@@ -1099,6 +1115,9 @@ public class Bill implements Serializable {
     }
 
     public Date getApproveAt() {
+        if (approveAt == null) {
+            approveAt = new Date();
+        }
         return approveAt;
     }
 
@@ -1131,6 +1150,9 @@ public class Bill implements Serializable {
     }
 
     public Date getInvoiceDate() {
+        if (invoiceDate == null) {
+            invoiceDate = new Date();
+        }
         return invoiceDate;
     }
 
@@ -1179,6 +1201,9 @@ public class Bill implements Serializable {
     }
 
     public Date getChequeDate() {
+        if (chequeDate == null) {
+            chequeDate = new Date();
+        }
         return chequeDate;
     }
 
@@ -1459,6 +1484,9 @@ public class Bill implements Serializable {
     }
 
     public Date getEditedAt() {
+        if (editedAt == null) {
+            editedAt = new Date();
+        }
         return editedAt;
     }
 
@@ -1544,6 +1572,9 @@ public class Bill implements Serializable {
     }
 
     public Date getAppointmentAt() {
+        if (appointmentAt == null) {
+            appointmentAt = new Date();
+        }
         return appointmentAt;
     }
 
@@ -1552,6 +1583,9 @@ public class Bill implements Serializable {
     }
 
     public Date getPaidAt() {
+        if (paidAt == null) {
+            paidAt = new Date();
+        }
         return paidAt;
     }
 
@@ -1624,6 +1658,9 @@ public class Bill implements Serializable {
     }
 
     public Date getSmsedAt() {
+        if (smsedAt == null) {
+            smsedAt = new Date();
+        }
         return smsedAt;
     }
 

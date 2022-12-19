@@ -154,7 +154,7 @@ public class InvestigationController implements Serializable {
             s.setRetiredAt(null);
             s.setRetirer(null);
             getFacade().edit(s);
-            //System.out.println("undeleted = " + s);
+            //// System.out.println("undeleted = " + s);
         }
         selectedIxs = null;
         listDeletedIxs();
@@ -213,7 +213,7 @@ public class InvestigationController implements Serializable {
 
     public List<Department> getInstitutionDepatrments() {
         List<Department> d;
-        ////System.out.println("gettin ins dep ");
+        ////// System.out.println("gettin ins dep ");
         if (getCurrent().getInstitution() == null) {
             return new ArrayList<Department>();
         } else {
@@ -254,7 +254,7 @@ public class InvestigationController implements Serializable {
 
     public void reportItemsToWorksheetItems() {
         for (WorksheetItem wi : getWorksheetItemFacade().findAll()) {
-            ////System.out.println("item removing is " + wi);
+            ////// System.out.println("item removing is " + wi);
             getWorksheetItemFacade().remove(wi);
         }
         for (Investigation i : getItems()) {
@@ -264,7 +264,7 @@ public class InvestigationController implements Serializable {
                     wi.setItem(i);
                     wi.setName(ri.getName());
                     i.getWorksheetItems().add(wi);
-                    ////System.out.println("Worksheet added " + wi);
+                    ////// System.out.println("Worksheet added " + wi);
                 }
             }
             getItemFacade().edit(i);
@@ -301,8 +301,8 @@ public class InvestigationController implements Serializable {
     }
 
     public List<Investigation> completeInvest(String query) {
-        System.out.println("master" + listMasterItemsOnly);
-        System.out.println("master login Lab");
+        // System.out.println("master" + listMasterItemsOnly);
+        // System.out.println("master login Lab");
         if (query == null || query.trim().equals("")) {
             return new ArrayList<>();
         }
@@ -316,17 +316,17 @@ public class InvestigationController implements Serializable {
                 + " and (upper(c.name) like :n or "
                 + " upper(c.fullName) like :n or "
                 + " upper(c.code) like :n or upper(c.printName) like :n ) ";
-        ////System.out.println(sql);
+        ////// System.out.println(sql);
 
         m.put("n", "%" + query.toUpperCase() + "%");
 
         if (listMasterItemsOnly == true) {
-            System.out.println("inside intitution null only");
+            // System.out.println("inside intitution null only");
             sql += " and c.institution is null ";
         }
 
         if (sessionController.getInstitutionPreference().isInstitutionSpecificItems()) {
-            System.out.println("inside intitution null and logged institution only");
+            // System.out.println("inside intitution null and logged institution only");
             sql += " and (c.institution is null "
                     + " or c.institution=:ins) ";
             m.put("ins", sessionController.getInstitution());
@@ -347,7 +347,7 @@ public class InvestigationController implements Serializable {
         } else {
             // sql = "select c from Investigation c where c.retired=false and upper(c.name) like '%" + query.toUpperCase() + "%' order by c.name";
             sql = "select c from Investigation c where c.retired=false and type(c)!=Packege and upper(c.name) like '%" + query.toUpperCase() + "%' order by c.name";
-            ////System.out.println(sql);
+            ////// System.out.println(sql);
             suggestions = getFacade().findBySQL(sql);
         }
         return suggestions;
@@ -528,7 +528,7 @@ public class InvestigationController implements Serializable {
                 String ix = w.get(1);
                 String ic = w.get(2);
                 String f = w.get(4);
-                ////System.out.println(code + " " + ix + " " + ic + " " + f);
+                ////// System.out.println(code + " " + ix + " " + ic + " " + f);
 
                 Investigation tix = new Investigation();
                 tix.setCode(code);
@@ -578,29 +578,29 @@ public class InvestigationController implements Serializable {
         getCurrent().setSymanticType(SymanticType.Laboratory_Procedure);
 //        getCurrent().setInstitution(institution);
         if (getCurrent().getId() != null && getCurrent().getId() > 0) {
-            ////System.out.println("1");
+            ////// System.out.println("1");
             if (billedAs == false) {
-                ////System.out.println("2");
+                ////// System.out.println("2");
                 getCurrent().setBilledAs(getCurrent());
 
             }
             if (reportedAs == false) {
-                ////System.out.println("3");
+                ////// System.out.println("3");
                 getCurrent().setReportedAs(getCurrent());
             }
             getFacade().edit(getCurrent());
             UtilityController.addSuccessMessage("Updated Successfully.");
         } else {
-            ////System.out.println("4");
+            ////// System.out.println("4");
             getCurrent().setCreatedAt(Calendar.getInstance(TimeZone.getTimeZone("IST")).getTime());
             getCurrent().setCreater(getSessionController().getLoggedUser());
             getFacade().create(getCurrent());
             if (billedAs == false) {
-                ////System.out.println("5");
+                ////// System.out.println("5");
                 getCurrent().setBilledAs(getCurrent());
             }
             if (reportedAs == false) {
-                ////System.out.println("6");
+                ////// System.out.println("6");
                 getCurrent().setReportedAs(getCurrent());
             }
             getFacade().edit(getCurrent());

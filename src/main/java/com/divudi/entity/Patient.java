@@ -47,6 +47,7 @@ public class Patient implements Serializable {
     Date createdAt;
     @ManyToOne
     WebUser editer;
+    @Column(name = "EDITEDATNEW")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     Date editedAt;
     //Retairing properties

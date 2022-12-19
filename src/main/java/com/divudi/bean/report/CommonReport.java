@@ -1072,7 +1072,7 @@ public class CommonReport implements Serializable {
         if (getReferenceInstitution() != null) {
             sql += " and b.referenceInstitution=:inst ";
             temMap.put("inst", getReferenceInstitution());
-            //System.out.println("getReferenceInstitution().getName() = " + getReferenceInstitution().getName());
+            //// System.out.println("getReferenceInstitution().getName() = " + getReferenceInstitution().getName());
         }
         sql += "order by b.deptId,b.fromInstitution.name ";
 
@@ -1175,13 +1175,13 @@ public class CommonReport implements Serializable {
     public void createGRNBillItemForAsset() {
         billItems = new ArrayList<>();
         billItems=createStoreGRNBillItem(DepartmentType.Inventry);
-        System.out.println("billItems Size = " + billItems.size());
+        // System.out.println("billItems Size = " + billItems.size());
     }
     
     public void createGRNBillItemForStore() {
         billItems = new ArrayList<>();
         billItems=createStoreGRNBillItem(DepartmentType.Store);
-        System.out.println("billItems Size = " + billItems.size());
+        // System.out.println("billItems Size = " + billItems.size());
     }
     
     public List<BillItem> createStoreGRNBillItem(DepartmentType dt) {
@@ -1204,8 +1204,8 @@ public class CommonReport implements Serializable {
         m.put("dt", dt);
 
         bs = getBillItemFac().findBySQL(sql, m, TemporalType.TIMESTAMP);
-        //System.out.println("billItems = " + billItems);
-        System.out.println("billItems Size = " + bs.size());
+        //// System.out.println("billItems = " + billItems);
+        // System.out.println("billItems Size = " + bs.size());
         
         return bs;
     }
@@ -1830,7 +1830,7 @@ public class CommonReport implements Serializable {
         if (getReferenceInstitution() != null) {
             sql += " and b.referenceInstitution=:inst ";
             temMap.put("inst", getReferenceInstitution());
-            //System.out.println("getReferenceInstitution().getName() = " + getReferenceInstitution().getName());
+            //// System.out.println("getReferenceInstitution().getName() = " + getReferenceInstitution().getName());
         }
 
         temMap.put("fromDate", getFromDate());

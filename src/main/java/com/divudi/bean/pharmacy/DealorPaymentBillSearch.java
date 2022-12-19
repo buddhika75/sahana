@@ -94,7 +94,7 @@ public class DealorPaymentBillSearch implements Serializable {
     WebUser user;
 
     public void approve() {
-        System.out.println("in approve");
+        // System.out.println("in approve");
         if (getBill().getReferenceBill() != null) {
             UtilityController.addErrorMessage("Already Approved");
             return;
@@ -113,9 +113,9 @@ public class DealorPaymentBillSearch implements Serializable {
         bill.setReferenceBill(newBill);
         billFacade.edit(bill);
 
-        System.out.println("getBill().getBillItems() = " + getBill().getBillItems());
-        System.out.println("getBill().getBillItems() = " + getBill().getBillItems().size());
-        System.out.println("getBillItems() = " + getBillItems().size());
+        // System.out.println("getBill().getBillItems() = " + getBill().getBillItems());
+        // System.out.println("getBill().getBillItems() = " + getBill().getBillItems().size());
+        // System.out.println("getBillItems() = " + getBillItems().size());
 
         for (BillItem bi : getBillItems()) {
             System.err.println("in");
@@ -126,12 +126,12 @@ public class DealorPaymentBillSearch implements Serializable {
             newBi.setCreater(sessionController.getLoggedUser());
             newBi.setReferanceBillItem(bi);
             billItemFacede.create(newBi);
-            System.out.println("newBi = " + newBi);
+            // System.out.println("newBi = " + newBi);
             bi.setReferanceBillItem(newBi);
             billItemFacede.edit(bi);
-            System.out.println("bi = " + bi);
-            System.out.println("newBi.getBill = " + newBi.getBill());
-            System.out.println("newBi.getBill.getReferenceBill = " + newBi.getBill().getReferenceBill());
+            // System.out.println("bi = " + bi);
+            // System.out.println("newBi.getBill = " + newBi.getBill());
+            // System.out.println("newBi.getBill.getReferenceBill = " + newBi.getBill().getReferenceBill());
             System.err.println("out");
         }
 
@@ -160,10 +160,10 @@ public class DealorPaymentBillSearch implements Serializable {
         List<Bill> userBills;
         if (getUser() == null) {
             userBills = new ArrayList<>();
-            ////System.out.println("user is null");
+            ////// System.out.println("user is null");
         } else {
             userBills = getBillBean().billsFromSearchForUser(txtSearch, getFromDate(), getToDate(), getUser(), getSessionController().getInstitution(), BillType.OpdBill);
-            ////System.out.println("user ok");
+            ////// System.out.println("user ok");
         }
         if (userBills == null) {
             userBills = new ArrayList<>();
@@ -414,7 +414,7 @@ public class DealorPaymentBillSearch implements Serializable {
     }
 
     public List<Bill> getBillsToApproveCancellation() {
-        ////System.out.println("1");
+        ////// System.out.println("1");
         billsToApproveCancellation = ejbApplication.getBillsToCancel();
         return billsToApproveCancellation;
     }
@@ -543,13 +543,13 @@ public class DealorPaymentBillSearch implements Serializable {
 
     public List<Bill> getUserBills() {
         List<Bill> userBills;
-        ////System.out.println("getting user bills");
+        ////// System.out.println("getting user bills");
         if (getUser() == null) {
             userBills = new ArrayList<Bill>();
-            ////System.out.println("user is null");
+            ////// System.out.println("user is null");
         } else {
             userBills = getBillBean().billsFromSearchForUser(txtSearch, getFromDate(), getToDate(), getUser(), BillType.OpdBill);
-            ////System.out.println("user ok");
+            ////// System.out.println("user ok");
         }
         if (userBills == null) {
             userBills = new ArrayList<Bill>();
@@ -605,8 +605,8 @@ public class DealorPaymentBillSearch implements Serializable {
         if (getBill() != null && billItems == null) {
             String sql = "SELECT b FROM BillItem b WHERE b.retired=false and b.bill.id=" + getBill().getId();
             billItems = getBillItemFacede().findBySQL(sql);
-//            System.out.println("sql for bill item search is " + sql);
-            System.out.println("results for bill item search is " + billItems.size());
+//            // System.out.println("sql for bill item search is " + sql);
+            // System.out.println("results for bill item search is " + billItems.size());
 
         }
         if (billItems == null) {

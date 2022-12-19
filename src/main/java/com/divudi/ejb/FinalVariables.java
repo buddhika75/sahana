@@ -33,11 +33,11 @@ public class FinalVariables {
 
     public Integer getSessionSessionDayCounter() {
         int maxRowNumber = 0;
-        //System.out.println("maxRowNumber = " + maxRowNumber);
+        //// System.out.println("maxRowNumber = " + maxRowNumber);
         maxRowNumber = getSheduleController().getCurrent().getMaxTableRows();
-        //System.out.println("maxRowNumber = " + maxRowNumber);
+        //// System.out.println("maxRowNumber = " + maxRowNumber);
         if (maxRowNumber == 0) {
-            System.out.println("maxRowNumber" + maxRowNumber);
+            // System.out.println("maxRowNumber" + maxRowNumber);
             return 14;
         }
         return maxRowNumber;
@@ -45,12 +45,12 @@ public class FinalVariables {
 
     public Integer getSessionSessionDayCounter(List<ServiceSession> inputSessions) {
         int maxRowNumber = 0;
-        //System.out.println("maxRowNumber = " + maxRowNumber);
+        //// System.out.println("maxRowNumber = " + maxRowNumber);
         for (ServiceSession ss : inputSessions) {
             maxRowNumber = ss.getMaxTableRows();
-            //System.out.println("maxRowNumber = " + maxRowNumber);
+            //// System.out.println("maxRowNumber = " + maxRowNumber);
             if (maxRowNumber == 0) {
-                System.out.println("maxRowNumber" + maxRowNumber);
+                // System.out.println("maxRowNumber" + maxRowNumber);
                 return 14;
             }
             return maxRowNumber;
