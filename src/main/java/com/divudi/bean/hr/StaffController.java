@@ -442,7 +442,7 @@ public class StaffController implements Serializable {
                     + " where p.retired=false "
                     + " and LENGTH(p.code) > 0 "
                     + " and LENGTH(p.person.name) > 0 "
-                    + " and (upper(p.person.name) like '%" + query.toUpperCase() + "%' "
+                    + " and ((p.person.name) like '%" + query.toUpperCase() + "%' "
                     + " or upper(p.code) like '%" + query.toUpperCase() + "%' )"
                     + " order by p.person.name";
 
@@ -483,7 +483,7 @@ public class StaffController implements Serializable {
                     + " where p.retired=false "
                     + " and LENGTH(p.code) > 0 "
                     + " and LENGTH(p.person.name) > 0 "
-                    + " and (upper(p.person.name) like '%" + query.toUpperCase() + "%' "
+                    + " and ((p.person.name) like '%" + query.toUpperCase() + "%' "
                     + " or upper(p.code)='" + query.toUpperCase() + "' )"
                     + " order by p.person.name";
 
@@ -542,7 +542,7 @@ public class StaffController implements Serializable {
             suggestions = new ArrayList<>();
         } else {
             sql = "select p from Staff p where p.retired=false  and"
-                    + " (upper(p.person.name) like :q or  "
+                    + " ((p.person.name) like :q or  "
                     + " upper(p.code) like :q )"
                     + " order by p.person.name";
             ////// System.out.println(sql);
@@ -577,7 +577,7 @@ public class StaffController implements Serializable {
         sql = "select p from Staff p "
                 + " where p.retired=false "
                 + " and p.roster=:rs "
-                + " and (upper(p.person.name) like :q "
+                + " and ((p.person.name) like :q "
                 + " or  upper(p.code) like :q )"
                 + " order by p.person.name";
         ////// System.out.println(sql);
@@ -613,7 +613,7 @@ public class StaffController implements Serializable {
             suggestions = new ArrayList<>();
         } else {
             sql = "select p from Staff p where p.retired=false and "
-                    + "(upper(p.person.name) like '%" + query.toUpperCase() + "%' or "
+                    + "((p.person.name) like '%" + query.toUpperCase() + "%' or "
                     + " upper(p.code) like '%" + query.toUpperCase() + "%' ) and type(p) != Doctor"
                     + " order by p.person.name";
             ////// System.out.println(sql);
@@ -748,7 +748,7 @@ public class StaffController implements Serializable {
             sql = "select c from Staff c"
                     + " where c.retired=false "
                     + " and type(c)!=:class"
-                    + " and (upper(c.person.name) like :q or upper(c.code) like :p) "
+                    + " and ((c.person.name) like :q or upper(c.code) like :p) "
                     + " order by c.person.name";
             hm.put("q", "%" + getSelectText().toUpperCase() + "%");
             hm.put("p", "%" + getSelectText().toUpperCase() + "%");

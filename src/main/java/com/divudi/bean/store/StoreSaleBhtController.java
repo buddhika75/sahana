@@ -379,7 +379,7 @@ public class StoreSaleBhtController implements Serializable {
                     + " and i.department=:d "
                     + " and i.itemBatch.item.departmentType is null "
                     + " or i.itemBatch.item.departmentType!=:depTp "
-                    + " and (upper(i.itemBatch.item.name) like :n "
+                    + " and ((i.itemBatch.item.name) like :n "
                     + " or upper(i.itemBatch.item.code) like :n "
                     + " or upper(i.itemBatch.item.barcode) like :n )  "
                     + " order by i.itemBatch.item.name, i.itemBatch.dateOfExpire";
@@ -390,7 +390,7 @@ public class StoreSaleBhtController implements Serializable {
                     + " and i.department=:d"
                     + " and i.itemBatch.item.departmentType is null "
                     + " or i.itemBatch.item.departmentType!=:depTp "
-                    + "  and (upper(i.itemBatch.item.name) like :n "
+                    + "  and ((i.itemBatch.item.name) like :n "
                     + " or upper(i.itemBatch.item.code) like :n)  "
                     + " order by i.itemBatch.item.name, i.itemBatch.dateOfExpire";
         }
@@ -415,7 +415,7 @@ public class StoreSaleBhtController implements Serializable {
                     + " where i.stock >:s"
                     + " and i.department=:d "
                     + " and i.itemBatch.item.departmentType=:depTp "
-                    + " and (upper(i.itemBatch.item.name) like :n "
+                    + " and ((i.itemBatch.item.name) like :n "
                     + " or upper(i.itemBatch.item.code) like :n "
                     + " or upper(i.itemBatch.item.barcode) like :n )  "
                     + " order by i.itemBatch.item.name, i.itemBatch.dateOfExpire";
@@ -424,7 +424,7 @@ public class StoreSaleBhtController implements Serializable {
                     + " where i.stock >:s "
                     + " and i.department=:d"
                     + " and i.itemBatch.item.departmentType=:depTp "
-                    + "  and (upper(i.itemBatch.item.name) like :n "
+                    + "  and ((i.itemBatch.item.name) like :n "
                     + " or upper(i.itemBatch.item.code) like :n)  "
                     + " order by i.itemBatch.item.name, i.itemBatch.dateOfExpire";
         }

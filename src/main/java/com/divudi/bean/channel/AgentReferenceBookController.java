@@ -243,7 +243,7 @@ public class AgentReferenceBookController implements Serializable {
                 + " and b.billType=:bt "
                 + " and b.paymentMethod=:pm "
                 + " and b.creditCompany=:ins "
-                + " and (upper(ah.referenceNo) like :rn) ";
+                + " and ((ah.referenceNo) like :rn) ";
 
         m.put("bt", BillType.ChannelAgent);
         m.put("pm", PaymentMethod.Agent);

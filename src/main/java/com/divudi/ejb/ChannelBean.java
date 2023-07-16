@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.TimeZone;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.TemporalType;
@@ -96,14 +97,19 @@ public class ChannelBean {
     public int getBillSessionsCount(ServiceSession ss, Date date) {
         BillType[] billTypes = {BillType.ChannelAgent, BillType.ChannelCash, BillType.ChannelOnCall, BillType.ChannelStaff};
         List<BillType> bts = Arrays.asList(billTypes);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        System.out.println("c = " + c);
+        c.add(Calendar.DATE, -1);
         String sql = "Select count(bs) From BillSession bs "
                 + " where bs.retired=false"
                 + " and bs.serviceSession =:ser "
                 + " and bs.bill.billType in :bt"
                 + " and type(bs.bill)=:class "
-                + " and bs.sessionDate= :ssDate";
+                + " and bs.sessionDate > :ssDate"
+                + "";
         HashMap hh = new HashMap();
-        hh.put("ssDate", date);
+        hh.put("ssDate", c.getTime());
         hh.put("ser", ss);
         hh.put("bt", bts);
         hh.put("class", BilledBill.class);
@@ -115,16 +121,21 @@ public class ChannelBean {
     public int getBillSessionsCountWithOutCancelRefund(ServiceSession ss, Date date) {
         BillType[] billTypes = {BillType.ChannelAgent, BillType.ChannelCash, BillType.ChannelOnCall, BillType.ChannelStaff};
         List<BillType> bts = Arrays.asList(billTypes);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        System.out.println("c = " + c);
+        c.add(Calendar.DATE, -1);
         String sql = "Select count(bs) From BillSession bs "
                 + " where bs.retired=false"
                 + " and bs.serviceSession =:ser "
                 + " and bs.bill.billType in :bt"
                 + " and type(bs.bill)=:class "
-                + " and bs.sessionDate= :ssDate "
+                + " and bs.sessionDate > :ssDate "
                 + " and bs.bill.cancelled=false "
                 + " and bs.bill.refunded=false ";
         HashMap hh = new HashMap();
-        hh.put("ssDate", date);
+        hh.put("ssDate", c.getTime());
+        
         hh.put("ser", ss);
         hh.put("bt", bts);
         hh.put("class", BilledBill.class);
@@ -136,15 +147,19 @@ public class ChannelBean {
     public int getBillSessionsCountCrditBill(ServiceSession ss, Date date) {
         BillType[] billTypes = {BillType.ChannelAgent, BillType.ChannelCash, BillType.ChannelOnCall, BillType.ChannelStaff};
         List<BillType> bts = Arrays.asList(billTypes);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        System.out.println("c = " + c);
+        c.add(Calendar.DATE, -1);
         String sql = "Select count(bs) From BillSession bs "
                 + " where bs.retired=false"
                 + " and bs.serviceSession =:ser "
                 + " and bs.bill.billType in :bt"
                 + " and type(bs.bill)=:class "
-                + " and bs.sessionDate= :ssDate "
+                + " and bs.sessionDate> :ssDate "
                 + " and bs.bill.paidAmount=:pa ";
         HashMap hh = new HashMap();
-        hh.put("ssDate", date);
+        hh.put("ssDate", c.getTime());
         hh.put("ser", ss);
         hh.put("bt", bts);
         hh.put("class", BilledBill.class);
@@ -269,11 +284,16 @@ public class ChannelBean {
             return createdSessions;
         }
 
-        Date nowDate = Calendar.getInstance().getTime();
-
+        Calendar nwc = Calendar.getInstance();
+        nwc.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
+        Date nowDate = nwc.getTime();
+        
+        
         Calendar c = Calendar.getInstance();
+        c.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
         c.add(Calendar.MONTH, 1);
-        Date toDate = c.getTime();
+        Date toDate =  c.getTime();
+        
         Integer tmp = 0;
         int rowIndex = 0;
 
@@ -283,6 +303,7 @@ public class ChannelBean {
             if (checkLeaveDate(nowDate, inputSessions.get(0).getStaff())) {
                 System.err.println("INSIDE");
                 Calendar nc = Calendar.getInstance();
+                nc.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
                 nc.setTime(nowDate);
                 nc.add(Calendar.DATE, 1);
                 nowDate = nc.getTime();
@@ -294,8 +315,10 @@ public class ChannelBean {
 //                System.err.println("@@@1");
                 if (ss.getSessionDate() != null) {
                     Calendar sessionDate = Calendar.getInstance();
+                    sessionDate.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
                     sessionDate.setTime(ss.getSessionDate());
                     Calendar nDate = Calendar.getInstance();
+                    nDate.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
                     nDate.setTime(nowDate);
 
                     if (sessionDate.get(Calendar.DATE) == nDate.get(Calendar.DATE)) {
@@ -339,6 +362,7 @@ public class ChannelBean {
                 for (ServiceSession ss : inputSessions) {
 //                    System.err.println("@@@42");
                     Calendar wdc = Calendar.getInstance();
+                    wdc.setTimeZone(TimeZone.getTimeZone("Asia/Colombo"));
                     wdc.setTime(nowDate);
 //                    System.err.println("@@@421");
 //                    System.err.println("Week " + ss.getSessionWeekday());

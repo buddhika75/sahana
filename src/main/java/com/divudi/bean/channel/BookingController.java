@@ -285,9 +285,9 @@ public class BookingController implements Serializable {
             suggestions = new ArrayList<>();
         } else {
             if (getSpeciality() != null) {
-                sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) and p.speciality.id = " + getSpeciality().getId() + " order by p.person.name";
+                sql = "select p from Staff p where p.retired=false and ((p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) and p.speciality.id = " + getSpeciality().getId() + " order by p.person.name";
             } else {
-                sql = "select p from Staff p where p.retired=false and (upper(p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
+                sql = "select p from Staff p where p.retired=false and ((p.person.name) like '%" + query.toUpperCase() + "%'or  upper(p.code) like '%" + query.toUpperCase() + "%' ) order by p.person.name";
             }
             ////// System.out.println(sql);
             suggestions = getStaffFacade().findBySQL(sql);
@@ -563,28 +563,68 @@ public class BookingController implements Serializable {
     public List<BillSession> getBillSessions() {
         return billSessions;
     }
-
-    public void fillBillSessions(SelectEvent event) {
+    
+    public void fillBillSessionsBtnClick() {
+        System.out.println("fillBillSessions = " );
+        System.out.println("event = " + event);
         selectedBillSession = null;
-        selectedServiceSession = ((ServiceSession) event.getObject());
+        
 
         BillType[] billTypes = {BillType.ChannelAgent, BillType.ChannelCash, BillType.ChannelOnCall, BillType.ChannelStaff};
         List<BillType> bts = Arrays.asList(billTypes);
-
+        Calendar c = Calendar.getInstance();
+        c.setTime(getSelectedServiceSession().getSessionDate());
+        System.out.println("getSelectedServiceSession().getSessionDate() = " + getSelectedServiceSession().getSessionDate());
+        System.out.println("c = " + c);
+        c.add(Calendar.DATE, -2);
         String sql = "Select bs From BillSession bs "
                 + " where bs.retired=false"
                 + " and bs.serviceSession=:ss "
                 + " and bs.bill.billType in :bt"
                 + " and type(bs.bill)=:class "
-                + " and bs.sessionDate= :ssDate "
+                + " and bs.sessionDate > :ssDate "
                 + " order by bs.serialNo ";
         HashMap hh = new HashMap();
         hh.put("bt", bts);
         hh.put("class", BilledBill.class);
-        hh.put("ssDate", getSelectedServiceSession().getSessionAt());
-        hh.put("ss", getSelectedServiceSession());
+        hh.put("ssDate", c.getTime());
+        hh.put("ss",  getSelectedServiceSession());
         billSessions = getBillSessionFacade().findBySQL(sql, hh, TemporalType.DATE);
-        // System.out.println("billSessions" + billSessions);
+        System.out.println("hh = " + hh);
+        System.out.println("sql = " + sql);
+        System.out.println("billSessions" + billSessions);
+
+    }
+
+    public void fillBillSessions(SelectEvent event) {
+        System.out.println("fillBillSessions = " );
+        System.out.println("event = " + event);
+        selectedBillSession = null;
+        selectedServiceSession = ((ServiceSession) event.getObject());
+
+        BillType[] billTypes = {BillType.ChannelAgent, BillType.ChannelCash, BillType.ChannelOnCall, BillType.ChannelStaff};
+        List<BillType> bts = Arrays.asList(billTypes);
+        Calendar c = Calendar.getInstance();
+        c.setTime(getSelectedServiceSession().getSessionDate());
+        System.out.println("getSelectedServiceSession().getSessionDate() = " + getSelectedServiceSession().getSessionDate());
+        System.out.println("c = " + c);
+        c.add(Calendar.DATE, -2);
+        String sql = "Select bs From BillSession bs "
+                + " where bs.retired=false"
+                + " and bs.serviceSession=:ss "
+                + " and bs.bill.billType in :bt"
+                + " and type(bs.bill)=:class "
+                + " and bs.sessionDate > :ssDate "
+                + " order by bs.serialNo ";
+        HashMap hh = new HashMap();
+        hh.put("bt", bts);
+        hh.put("class", BilledBill.class);
+        hh.put("ssDate", c.getTime());
+        hh.put("ss",  getSelectedServiceSession());
+        billSessions = getBillSessionFacade().findBySQL(sql, hh, TemporalType.DATE);
+        System.out.println("hh = " + hh);
+        System.out.println("sql = " + sql);
+        System.out.println("billSessions" + billSessions);
 
     }
 

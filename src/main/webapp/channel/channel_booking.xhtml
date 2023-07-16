@@ -77,9 +77,10 @@
                                              selectionMode="single" 
                                              selection="#{bookingController.selectedServiceSession}" scrollable="true" scrollHeight="282">
 
-                                    <p:ajax event="rowSelect" process="@this tblSessionsOfSelectedConsultant" 
+                                    <p:ajax event="rowSelect" process="tblSessionsOfSelectedConsultant" 
                                             update=":#{p:component('tblBookingsOfSelectedSession')} :#{p:component('lblSessionTotal')}"
                                             listener="#{bookingController.fillBillSessions}" />  
+                                    
 
                                     <p:column headerText="Session" style="text-wrap: none;"  rendered="#{sessionController.institutionPreference.applicationInstitution eq 'Ruhuna'}">
                                         <h:outputText value="#{ses.sessionAt}">
@@ -87,11 +88,11 @@
                                         </h:outputText>
                                         <h:outputText value=" &nbsp;&nbsp;" />
                                         <h:outputText value="#{ses.sessionAt}">
-                                            <f:convertDateTime pattern="MMM/dd/yyyy"/>
+                                            <f:convertDateTime pattern="MMM/dd/yyyy" timeZone="Asia/Colombo"/>
                                         </h:outputText>
                                         <h:outputText value=" &nbsp;&nbsp;" />
                                         <h:outputText value="#{ses.startingTime}">
-                                            <f:convertDateTime pattern="hh:mm a"/>
+                                            <f:convertDateTime pattern="hh:mm a" timeZone="Asia/Colombo"/>
                                         </h:outputText>
                                         <h:outputText value=" &nbsp;&nbsp;Rs." />
                                         <h:outputText value="#{ses.originatingSession.totalFee}">
@@ -114,6 +115,12 @@
                                             <f:convertNumber pattern="00" ></f:convertNumber>
                                         </h:outputText>
                                         <h:outputText value="**" />
+                                        <p:commandButton id="btnDisplay" value="Display" 
+                                                         process="btnDisplay tblSessionsOfSelectedConsultant" 
+                                            update=":#{p:component('tblBookingsOfSelectedSession')} :#{p:component('lblSessionTotal')}"
+                                            action="#{bookingController.fillBillSessionsBtnClick}">
+                                            <f:setPropertyActionListener target="#{bookingController.selectedServiceSession}" value="#{ses}" ></f:setPropertyActionListener>
+                                        </p:commandButton>
                                     </p:column>
                                     <p:column headerText="Session" style="text-wrap: none;"  rendered="#{sessionController.institutionPreference.applicationInstitution ne 'Ruhuna'}">
                                         <h:outputText id="lblSesName" value="#{ses.name}" escape="false"></h:outputText>
