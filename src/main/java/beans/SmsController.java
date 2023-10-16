@@ -60,14 +60,14 @@ public class SmsController implements Serializable {
     }
 
     public void sentHutchSms(){
-        // System.out.println("sentHutchSms");
+         System.out.println("sentHutchSms");
         if(message==null || message.trim().equals("")){
-            // System.out.println("no message");
+             System.out.println("no message");
             output = "No Message";
             return;
         }
         if(number==null || number.trim().equals("")){
-            // System.out.println("no number");
+             System.out.println("no number");
             output = "Number";
             return;
         }
@@ -98,7 +98,7 @@ password="eVog@737";
         m.put("NUM", number);
         m.put("MSG", message);
         String res = executePost("https://bulksms.hutch.lk/sendsmsmultimask.php", m);
-        // System.out.println("res = " + res);
+         System.out.println("res = " + res);
         if (res == null) {
             output = "";
         } else if (res.toUpperCase().contains("200")) {
